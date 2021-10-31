@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PermMedia, Label, Room, EmojiEmotions, Videocam, Send } from "@mui/icons-material";
+import { PermMedia, EmojiEmotions, Videocam, Send } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 import { useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";

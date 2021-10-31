@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import {
     Home,
@@ -10,13 +10,13 @@ import {
     Add,
     Forum,
     NotificationsActive,
-    ExpandMore,
+    
     FlagOutlined,
     HomeOutlined,
     SupervisedUserCircleOutlined,
     Subscriptions,
     Store,
-    ArrowDropDown,
+   
     AccountCircleOutlined,
     BookmarkBorderOutlined,
     LocalOfferOutlined,
@@ -26,17 +26,17 @@ import {
     NotificationsActiveOutlined,
 } from "@mui/icons-material";
 import { Avatar, IconButton } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { userLogged } from "../../features/users/usersSlice";
+// import { useDispatch } from "react-redux";
+// import { userLogged } from "../../features/users/usersSlice";
 import DropDown from "../DropDown";
 import { Link } from "react-router-dom";
 import useBarState from "../Custom/useBarState";
 
 function TopBar() {
-    const dispatch = useDispatch();
-    const handle = () => {
-        dispatch(userLogged(false));
-    };
+    // const dispatch = useDispatch();
+    // const handle = () => {
+    //     dispatch(userLogged(false));
+    // };
 
     // focus element on NavBar
     const [onFocus, onFocusHandler, getActiveElem] = useBarState({

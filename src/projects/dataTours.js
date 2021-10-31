@@ -1,4 +1,4 @@
-export default [
+const dataTours = [
     {
         id: "rec6d6T3q5EBIdCfD",
         name: "Best of Paris in 7 Days Tour",
@@ -35,3 +35,6 @@ export default [
         price: "2,595"
     }
 ];
+
+export default dataTours
+

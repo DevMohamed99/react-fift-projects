@@ -5,13 +5,12 @@ import {
     ThumbUp,
     ChatBubbleOutline,
     NearMe,
-    AccountCircle,
-    ExpandMoreOutlined,
+ 
     AccountCircleOutlined,
     BookmarkBorderOutlined,
     LocalOfferOutlined,
     ReportOutlined,
-    ExpandLessOutlined,
+
     MoreVert,
 } from "@mui/icons-material";
 import DropDown from "../../DropDown";
