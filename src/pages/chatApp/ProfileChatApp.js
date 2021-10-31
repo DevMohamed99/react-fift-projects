@@ -1,0 +1,141 @@
+import { Add, EditRounded, HomeOutlined, WorkOutline } from "@mui/icons-material";
+import styled from "styled-components";
+import Feed from "./FeedPages/Feed"
+
+
+function ProfileChatApp() {
+    return (
+        <MainProfile>
+            <TopProfile>
+                <CoverImg src={`/${"assets/post/3.jpeg"}`} alt="" />
+                <ProfileUserImg src={`/${"assets/person/7.jpeg"}`} />
+            </TopProfile>
+            <CenterProfile>
+                <ProfileInfo>
+                    <h4>Youness hassan</h4>
+                    <p>
+                        Lorem ipsum dolor sit am Lorem ipsum dolor sit am Lorem ipsum d Lorem ipsum
+                        dolor sit am Lore
+                    </p>
+                </ProfileInfo>
+                <ProfileSettings>
+                    <AddStory>
+                        <Add /> Add to Story
+                    </AddStory>
+                    <EditProfile>
+                        <EditRounded /> Edit Profile
+                    </EditProfile>
+                </ProfileSettings>
+                <ProfileStates>
+                    <ProfileState>
+                        <HomeOutlined />
+                        <span></span>
+                    </ProfileState>
+                    <ProfileState>
+                        <WorkOutline />
+                        <span></span>
+                    </ProfileState>
+                </ProfileStates>
+            </CenterProfile>
+            <BottomProfile>
+                <Feed />
+            </BottomProfile>
+        </MainProfile>
+    );
+}
+
+export default ProfileChatApp;
+
+const MainProfile = styled.div`
+    overflow-y: scroll;
+    scrollbar-width: none;
+`;
+
+const TopProfile = styled.div`
+    width: 100%;
+    position: relative;
+`;
+
+const CoverImg = styled.img`
+    width: 100%;
+    padding: 0 1rem;
+    height: 300px;
+    object-fit: cover;
+`;
+
+const ProfileUserImg = styled.img`
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 200px;
+    object-fit: cover;
+    border: 3px solid var(--body-bg);
+`;
+
+const CenterProfile = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+`;
+
+const ProfileInfo = styled.div`
+    width: 50%;
+    margin-top: 3.3rem;
+    text-align: center;
+
+    h4 {
+        font-family: "Montserrat";
+        font-size: 2.5rem;
+        color: var(--main);
+        letter-spacing: 0.1rem;
+    }
+    p {
+        font-family: "Roboto Mono";
+        color: var(--grey-600);
+    }
+`;
+
+const ProfileSettings = styled.div`
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+`;
+
+const AddStory = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    width: 400px;
+    background-color: var(--blue-500);
+    padding: 0.5rem 0;
+    color: var(--body-bg);
+    font-family: "Roboto Mono";
+    letter-spacing: 0.15rem;
+    font-weight: 500;
+    border-radius: 10px;
+    svg {
+        width: 19px;
+        height: 19px;
+    }
+    &:hover {
+        opacity: 0.84;
+    }
+`;
+
+const EditProfile = styled(AddStory)`
+    background-color: var(--grey-400);
+    color: var(--main);
+`;
+
+const ProfileStates = styled.div``;
+
+const ProfileState = styled.div``;
+
+const BottomProfile = styled.div``

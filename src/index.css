@@ -1,0 +1,125 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* add a new Classes Names */
+
+@layer utilities {
+    .top-dropdown {
+        top: attr(top-dropdown);
+    }
+    .right-dropdown {
+        right: attr(right-dropdown);
+    }
+    .bottom-dropdown {
+        bottom: attr(bottom-dropdown);
+    }
+    .left-dropdown {
+        left: attr(left-dropdown);
+    }
+    .topBar-active .MuiSvgIcon-root {
+        color: var(--blue-600);
+    }
+    .topBar-active:after {
+        content: "";
+        height: 3px;
+        background-color: var(--blue-600);
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        bottom: -6px;
+        transform-origin: left center 0px;
+        transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+        align-items: center;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Css  */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&family=Roboto+Mono:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,500&display=swap");
+/* variables */
+:root {
+    --primary-color: #5924ed;
+    --secondary-black: #0d081a;
+    --secondary-gray: #48464b;
+    --body-bg: #efebfa;
+
+    --main: #102a42;
+
+    --primary-100: #e0deff;
+    --primary-200: #c1beff;
+    --primary-300: #a29dff;
+    --primary-400: #837dff;
+    --primary-500: #645cff;
+    --primary-600: #504acc;
+    --primary-700: #3c3799;
+    --primary-800: #282566;
+    --primary-900: #141233;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-300: #cbd5e1;
+    --grey-400: #94a3b8;
+    --grey-500: #64748b;
+    --grey-600: #475569;
+    --grey-700: #334155;
+    --grey-800: #1e293b;
+    --grey-900: #0f172a;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-200: #bfdbfe;
+    --blue-300: #93c5fd;
+    --blue-400: #60a5fa;
+    --blue-500: #3b82f6;
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --blue-800: #1e40af;
+    --blue-900: #1e3a8a;
+
+    /* facebook icons */
+    --primary-design: #60dbfb;
+    --black-design: #0d0d0d;
+    --grey-design: #eff0f3;
+    --black: #222;
+    --white: #fff;
+    --red-light: #f8d7da;
+    --red-dark: #f8071baf;
+    --orange: #eb520cbe;
+    --green-light: #d1e7dd;
+    --green-dark: #0b9e59e8;
+    --yellow: #f0db51;
+    --yellow-light: #f8e881;
+    --yellow-dark: #6b5d00;
+    --clr-pink: #f28ab2;
+    --gold-clr: #fad91be1;
+    --green: #0df046;
+
+    --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+html {
+    font-family: "Roboto Mono";
+    overflow: hidden;
+}
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: var(--grey-200);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
