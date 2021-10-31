@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { useSelector } from "react-redux";
 import {
     Group,
     Chat,
@@ -10,8 +10,11 @@ import {
     ExpandMoreOutlined,
     WorkOutline,
 } from "@mui/icons-material";
+import {getActiveStateMenu} from "../../../features/components/getActiveStateMenu";
 
 function LeftSide() {
+    const isActiveMenuItem = useSelector(getActiveStateMenu());
+
     return (
         <MainLeftSide>
             <LeftSideRow Icon={LocalHospital} title="Covid-19 Info" Color={"var(--red-dark)"} />
@@ -25,9 +28,9 @@ function LeftSide() {
     );
 }
 
-function LeftSideRow({ Icon, title, Color }) {
+function LeftSideRow({ Icon, title, Color, isActive }) {
     return (
-        <SideRow colorSvg={Color}>
+        <SideRow colorSvg={Color} active={isActive}>
             {Icon && <Icon />}
             <h4>{title}</h4>
         </SideRow>
@@ -54,12 +57,15 @@ const SideRow = styled.div`
     font-weight: 100;
     letter-spacing: 0.1rem;
     cursor: pointer;
+    background-color: ${(props) => (props.active ? "var(--grey-300)" : "transparent")};
     svg {
         width: 30px;
         height: 30px;
         color: ${(props) => props.colorSvg};
     }
-
+    h4 {
+        color: ${(props) => props.active && props.colorSvg};
+    }
     &:hover {
         background-color: var(--grey-300);
         color: ${(props) => props.colorSvg};

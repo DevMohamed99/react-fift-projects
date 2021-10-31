@@ -10,13 +10,11 @@ import {
     Add,
     Forum,
     NotificationsActive,
-    
     FlagOutlined,
     HomeOutlined,
     SupervisedUserCircleOutlined,
     Subscriptions,
     Store,
-   
     AccountCircleOutlined,
     BookmarkBorderOutlined,
     LocalOfferOutlined,
@@ -223,7 +221,9 @@ function TopBar() {
                         <NotificationsActiveOutlined />
                     )}
                 </IconButton>
-                <IconButton className="active-button" onClick={() => {
+                <IconButton
+                    className="active-button"
+                    onClick={() => {
                         if (!onSelect.stateDropDown) {
                             OnSelectHandler(getActiveSelector(), "stateDropDown");
                         }
