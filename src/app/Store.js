@@ -5,6 +5,6 @@ import useMenuReducer from "../features/components/useMenuState"
 export const store = configureStore({
     reducer: {
         users: userReducer,
-        menu: useMenuReducer,
+        menuStates: useMenuReducer,
     },
 })

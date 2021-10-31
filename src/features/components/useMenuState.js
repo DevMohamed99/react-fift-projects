@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    stateMenu: {
+    Menu: {
         stateCV19: true,
         stateJobs: false,
         stateGroups: false,
@@ -12,30 +12,23 @@ const initialState = {
 };
 
 const useMenuState = createSlice({
-    name: "menu",
+    name: "menuStates",
     initialState,
     reducers: {
         setMenuState: (state, { payload }) => {
-            state.stateMenu = {
-                ...state.stateMenu,
-                [payload.activeState]: true,
-                [payload.currentState]: false,
+            state.Menu = {
+                ...state.Menu,
+                [payload.activeState]: false, // is active
+                [payload.currentState]: true, // will be active
             };
+            // state.Menu[payload.activeState] = false; // is active
+            // state.Menu[payload.currentState] = true; // will be active
         },
     },
 });
 
 export const { setMenuState } = useMenuState.actions;
 
-export const getStatesMenu = (state) => state.menu.stateMenu;
-
-export const getActiveStateMenu = (state) => {
-    const activeState = state.menu.stateMenu;
-    for (const activeItem in activeState) {
-        if (activeState[activeItem] === true) {
-            return activeItem;
-        }
-    }
-};
+export const getAllStates = (state) => state.menuStates.Menu
 
 export default useMenuState.reducer;

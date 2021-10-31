@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
     Group,
     Chat,
@@ -10,27 +10,81 @@ import {
     ExpandMoreOutlined,
     WorkOutline,
 } from "@mui/icons-material";
-import {getActiveStateMenu} from "../../../features/components/getActiveStateMenu";
+import { setMenuState, getAllStates } from "../../../features/components/useMenuState";
 
 function LeftSide() {
-    const isActiveMenuItem = useSelector(getActiveStateMenu());
+    const dispatch = useDispatch();
+    // get all states menu
+    const allStatesMenu = useSelector(getAllStates);
+    // get active menu item
+    const isActiveMenuItem = () => {
+        for (const activeItem in allStatesMenu) {
+            if (allStatesMenu[activeItem] === true) {
+                return activeItem;
+            }
+        }
+    };
+    const payloadState = { activeState: isActiveMenuItem(), currentState: "" };
+    // a function for updating a state menu item
+    const changeStateMenu = (state, currentState) => {
+        if (!state) {
+            payloadState.currentState = currentState;
+            dispatch(setMenuState(payloadState));
+        }
+    };
 
     return (
         <MainLeftSide>
-            <LeftSideRow Icon={LocalHospital} title="Covid-19 Info" Color={"var(--red-dark)"} />
-            <LeftSideRow Icon={WorkOutline} title="Jobs" Color={"var(--orange)"} />
-            <LeftSideRow Icon={Group} title="Groups" Color={"var(--blue-600)"} />
-            <LeftSideRow Icon={Chat} title="Messanger" Color={"var(--primary-color)"} />
-            <LeftSideRow Icon={HelpOutline} title="Questions" Color={"var(--main)"} />
-            <LeftSideRow Icon={TurnedInNot} title="Saved" Color={"var(--green-dark)"} />
+            <LeftSideRow
+                Icon={LocalHospital}
+                title="Covid-19 Info"
+                Color={"var(--red-dark)"}
+                onclick={() => changeStateMenu(allStatesMenu.stateCV19, "stateCV19")}
+                isActive={allStatesMenu.stateCV19}
+            />
+            <LeftSideRow
+                Icon={WorkOutline}
+                title="Jobs"
+                Color={"var(--orange)"}
+                onclick={() => changeStateMenu(allStatesMenu.stateJobs, "stateJobs")}
+                isActive={allStatesMenu.stateJobs}
+            />
+            <LeftSideRow
+                Icon={Group}
+                title="Groups"
+                Color={"var(--blue-600)"}
+                onclick={() => changeStateMenu(allStatesMenu.stateGroups, "stateGroups")}
+                isActive={allStatesMenu.stateGroups}
+            />
+            <LeftSideRow
+                Icon={Chat}
+                title="Messanger"
+                Color={"var(--primary-color)"}
+                onclick={() => changeStateMenu(allStatesMenu.stateMessanger, "stateMessanger")}
+                isActive={allStatesMenu.stateMessanger}
+            />
+            <LeftSideRow
+                Icon={HelpOutline}
+                title="Questions"
+                Color={"var(--main)"}
+                onclick={() => changeStateMenu(allStatesMenu.stateQuestions, "stateQuestions")}
+                isActive={allStatesMenu.stateQuestions}
+            />
+            <LeftSideRow
+                Icon={TurnedInNot}
+                title="Saved"
+                Color={"var(--green-dark)"}
+                onclick={() => changeStateMenu(allStatesMenu.stateSaved, "stateSaved")}
+                isActive={allStatesMenu.stateSaved}
+            />
             <LeftSideRow Icon={ExpandMoreOutlined} title="Show More" Color={"var(--blue-400)"} />
         </MainLeftSide>
     );
 }
 
-function LeftSideRow({ Icon, title, Color, isActive }) {
+function LeftSideRow({ Icon, title, Color, isActive, onclick }) {
     return (
-        <SideRow colorSvg={Color} active={isActive}>
+        <SideRow colorSvg={Color} active={isActive} onClick={onclick}>
             {Icon && <Icon />}
             <h4>{title}</h4>
         </SideRow>
