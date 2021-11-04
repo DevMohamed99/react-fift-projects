@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase-config";
-import { useDispatch } from "react-redux";
-import { userState } from "../../features/users/usersSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getLoginState, userState } from "../../features/users/usersSlice";
+import {Redirect} from "react-router";
 
 function Login() {
+    const isLoggedIn = useSelector(getLoginState);
     const dispatch = useDispatch();
     const user = auth.currentUser;
     const userDetails = {
@@ -24,6 +26,9 @@ function Login() {
             })
             .catch((error) => {});
     };
+    if (isLoggedIn) {
+        return <Redirect to="/apis-ui/clone-facebook/home" />;
+    }
     return (
         <MainLogin>
             <Logo>

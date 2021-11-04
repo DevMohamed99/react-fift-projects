@@ -11,43 +11,43 @@ function Home() {
             </Header>
             <Projects>
                 <ProjectCard>
-                    <Link to="/birthday-reminder">
+                    <Link to="/basic/birthday-reminder">
                         <img src="/images/project-1.png" alt="" />
                         <h4>Birthday Reminder</h4>
                     </Link>
                 </ProjectCard>
                 <ProjectCard>
-                    <Link to="/tours">
+                    <Link to="/basic/tours">
                         <img src="/images/project-2.png" alt="" />
                         <h4>Tours</h4>
                     </Link>
                 </ProjectCard>
                 <ProjectCard>
-                    <Link to="/reviews">
+                    <Link to="/basic/reviews">
                         <img src="/images/project-3.png" alt="" />
                         <h4>Reviews</h4>
                     </Link>
                 </ProjectCard>
                 <ProjectCard>
-                    <Link to="/accordion">
+                    <Link to="/basic/accordion">
                         <img src="/images/project-4.png" alt="" />
                         <h4>Accordion</h4>
                     </Link>
                 </ProjectCard>
                 <ProjectCard>
-                    <Link to="/menu">
+                    <Link to="/basic/menu">
                         <img src="/images/project-5.png" alt="" />
                         <h4>Menu</h4>
                     </Link>
                 </ProjectCard>
                 <ProjectCard>
-                    <Link to="/tabs">
+                    <Link to="/basic/tabs">
                         <img src="/images/project-6.png" alt="" />
                         <h4>Side Menu</h4>
                     </Link>
                 </ProjectCard>
                 <ProjectCard>
-                    <Link to="/slider">
+                    <Link to="/basic/slider">
                         <img src="/images/project-7.png" alt="" />
                         <h4>Slider</h4>
                     </Link>
@@ -63,7 +63,7 @@ function Home() {
             </Header>
             <Projects>
                 <ProjectCard>
-                    <Link to="/clone-facebook/home">
+                    <Link to="/apis-ui/clone-facebook/home">
                         <img
                             src="https://media.kasperskydaily.com/wp-content/uploads/sites/92/2021/02/19064621/what-is-off-facebook-activity-featured.jpg"
                             alt=""

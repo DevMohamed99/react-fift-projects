@@ -8,10 +8,10 @@ function SwitchPages({ Component }) {
     const isLoggedIn = useSelector(getLoginState);
     const pathname = window.location.pathname;
     if (!isLoggedIn) {
-        return <Redirect to="/clone-facebook/login" />;
+        return <Redirect to="/apis-ui/clone-facebook/login" />;
     }
- 
-    if(isLoggedIn) {
+
+    if (isLoggedIn) {
         return (
             <Main>
                 <TopBar />
@@ -23,8 +23,7 @@ function SwitchPages({ Component }) {
             </Main>
         );
     }
-    }
-    
+}
 
 export default SwitchPages;
 
@@ -37,5 +36,5 @@ const Page = styled.div`
     display: grid;
     height: calc(100vh - 40px);
     grid-template-columns: ${(props) =>
-        props.pathname === "/clone-facebook/profile" ? "16% 84%" : "16% 64% 20%"};
+        props.pathname === "/apis-ui/clone-facebook/profile" ? "16% 84%" : "16% 64% 20%"};
 `;

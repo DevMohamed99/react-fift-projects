@@ -1,23 +1,11 @@
-/* ./src/index.css */
+/* ? ./src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* add a new Classes Names */
+/* * add a new Classes Names */
 
 @layer utilities {
-    .top-dropdown {
-        top: attr(top-dropdown);
-    }
-    .right-dropdown {
-        right: attr(right-dropdown);
-    }
-    .bottom-dropdown {
-        bottom: attr(bottom-dropdown);
-    }
-    .left-dropdown {
-        left: attr(left-dropdown);
-    }
     .topBar-active .MuiSvgIcon-root {
         color: var(--blue-600);
     }
@@ -37,11 +25,12 @@
     }
 }
 
-/* Css  */
+/* ? Css  */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&family=Roboto+Mono:wght@300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,500&display=swap");
-/* variables */
+
+/* ? variables */
 :root {
     --primary-color: #5924ed;
     --secondary-black: #0d081a;
@@ -80,7 +69,7 @@
     --blue-800: #1e40af;
     --blue-900: #1e3a8a;
 
-    /* facebook icons */
+    /* * facebook icons */
     --primary-design: #60dbfb;
     --black-design: #0d0d0d;
     --grey-design: #eff0f3;
@@ -105,6 +94,8 @@
     --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
+/* ! styling global elements
+   ? html, body, *, code */
 html {
     font-family: "Roboto Mono";
     overflow: hidden;

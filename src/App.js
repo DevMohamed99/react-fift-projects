@@ -22,43 +22,47 @@ function App() {
         <Router>
             <Switch>
                 {/*  all about facebook app */}
-                <Route path="/clone-facebook">
+                <Route path="/apis-ui/clone-facebook">
                     <Switch>
-                        <Route path="/clone-facebook/login" component={Login} />
-                        <Route path="/clone-facebook/profile">
+                        <Route path="/apis-ui/clone-facebook/login" component={Login} />
+                        <Route path="/apis-ui/clone-facebook/profile">
                             <SwitchPages Component={<ProfileChatApp />} />
                         </Route>
-                        <Route exact path="/clone-facebook/home">
-                            <SwitchPages Component={<Feed />} />
+                        <Route exact path="/apis-ui/clone-facebook/home">
+                            <SwitchPages Component={<Feed customPadding="2rem 9rem" />} />
                         </Route>
-                        <Route path="/clone-facebook/friends">
+                        <Route path="/apis-ui/clone-facebook/friends">
                             <SwitchPages Component={<FriendsChatApp />} />
                         </Route>
-                        <Route path="/clone-facebook/market-place">
+                        <Route path="/apis-ui/clone-facebook/market-place">
                             <SwitchPages Component={<MarketChatApp />} />
                         </Route>
-                        <Route path="/clone-facebook/videos">
+                        <Route path="/apis-ui/clone-facebook/videos">
                             <SwitchPages Component={<VideosChatApp />} />
                         </Route>
-                        <Route path="/clone-facebook/pages">
+                        <Route path="/apis-ui/clone-facebook/pages">
                             <SwitchPages Component={<PagesChatApp />} />
                         </Route>
                     </Switch>
                 </Route>
-
-                <Route path="/menu">
+                <Route path="/ui">
+                    <Route path="/ui/login"></Route>
+                    <Route path="/ui/sign-in"></Route>
+                    <Route path="/ui/login-sign-in"></Route>
+                </Route>
+                <Route path="/basic/menu">
                     <Menu />
                 </Route>
-                <Route path="/accordion">
+                <Route path="/basic/accordion">
                     <Accordion />
                 </Route>
-                <Route path="/reviews">
+                <Route path="/basic/reviews">
                     <Reviews />
                 </Route>
-                <Route path="/tours">
+                <Route path="/basic/tours">
                     <Tours />
                 </Route>
-                <Route path="/birthday-reminder">
+                <Route path="/basic/birthday-reminder">
                     <BirthdayReminder />
                 </Route>
                 <Route exact path="/">

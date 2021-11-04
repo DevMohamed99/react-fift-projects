@@ -15,6 +15,8 @@ function DropDown({
     iconHoverColor,
     iconColor,
 }) {
+    
+
     const [dropDown, setDropDown] = useState(false);
     const handlerDropDownArrow = () => {
         setDropDown(!dropDown);
@@ -27,24 +29,31 @@ function DropDown({
                     iconWidth={iconWidth}
                     iconHeight={iconHeight}
                     iconHoverColor={iconHoverColor}
-                    iconColor={iconColor}>
+                    iconColor={dropDown && iconColor}>
                     {icon}
-                </IconDropDown>
-            </OutsideClickHandler>
+                </IconDropDown>            
             {dropDown && (
                 <DropDownList Width={width} className={classNames}>
                     {options &&
                         options.map((option, index) => (
-                            <DropDownItem key={option.id} focus={onfocus}>
-                                <Link>
-                                    {option.icon}
-                                    <span>{option.name}</span>
-                                </Link>
+                            <DropDownItem key={option.id} onClick={option.click} >
+                                {option.isLink ? (
+                                    <Link to={option.linked}>
+                                        {option.icon}
+                                        <span>{option.name}</span>
+                                    </Link>
+                                ) : (
+                                    <>
+                                        {option.icon}
+                                        <span>{option.name}</span>
+                                    </>
+                                )}
                                 {option.arrow && <ArrowForwardIosOutlined className="arrowRight" />}
                             </DropDownItem>
                         ))}
                 </DropDownList>
             )}
+            </OutsideClickHandler>
         </MainDropDown>
     );
 }
@@ -87,26 +96,25 @@ const DropDownItem = styled.li`
     padding: 0.7rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1.4rem;
+    justify-content: flex-start;
+    gap: 1rem;
     color: var(--main);
-    background-color: ${(props) => (props.focus ? "var(--grey-300)" : "transparent")};
     border-radius: 13px;
+    cursor: pointer;
     transition: background 250ms ease-in-out;
     a {
         display: flex;
         gap: 0.5rem;
         align-items: center;
         margin-right: 0.4rem;
-
-        svg {
-            width: 25px;
-            height: 25px;
-        }
-        span {
-            font-size: 1rem;
-            letter-spacing: 0.07rem;
-        }
+    }
+    svg {
+        width: 25px;
+        height: 25px;
+    }
+    span {
+        font-size: 1rem;
+        letter-spacing: 0.07rem;
     }
     .arrowRight {
         width: 18px;

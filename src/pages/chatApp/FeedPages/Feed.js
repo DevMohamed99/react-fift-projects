@@ -3,11 +3,13 @@ import styled from "styled-components";
 import Post from "../../../components/chat/feed/Post";
 import Share from "../../../components/chat/feed/Share";
 import Story from "../../../components/chat/feed/Story";
-import { Posts } from "./dataChatPosts";
+import { Posts } from "../../../projects/dataChatPosts";
 
-function Feed() {
+
+function Feed({ customPadding }) {
+    
     return (
-        <MainFeed>
+        <MainFeed padding={customPadding}>
             <Story />
             <Share />
             {Posts &&
@@ -32,11 +34,10 @@ function Feed() {
 export default Feed;
 
 const MainFeed = styled.div`
-    padding: 2rem 9rem;
+    padding: ${(props) => props.padding};
     overflow-y: scroll;
     scrollbar-width: none;
-    
-    
+
     /* background-color: var(--primary-700); */
 `;
 

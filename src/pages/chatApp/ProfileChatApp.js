@@ -1,7 +1,6 @@
-import { Add, EditRounded, HomeOutlined, WorkOutline } from "@mui/icons-material";
+import { Add, EditRounded, Favorite, Home, School, Work } from "@mui/icons-material";
 import styled from "styled-components";
-import Feed from "./FeedPages/Feed"
-
+import Feed from "./FeedPages/Feed";
 
 function ProfileChatApp() {
     return (
@@ -26,19 +25,62 @@ function ProfileChatApp() {
                         <EditRounded /> Edit Profile
                     </EditProfile>
                 </ProfileSettings>
-                <ProfileStates>
-                    <ProfileState>
-                        <HomeOutlined />
-                        <span></span>
-                    </ProfileState>
-                    <ProfileState>
-                        <WorkOutline />
-                        <span></span>
-                    </ProfileState>
-                </ProfileStates>
             </CenterProfile>
             <BottomProfile>
-                <Feed />
+                <Feed customPadding="2rem 6rem" />
+                <Sticky>
+                    <AboutUser>
+                        <ProfileStates>
+                            <h2>About you</h2>
+                            <ProfileState>
+                                <Home />
+                                <span>current Town is Morocco</span>
+                            </ProfileState>
+                            <ProfileState>
+                                <Work />
+                                <span>Don't have any job yet</span>
+                            </ProfileState>
+                            <ProfileState>
+                                <Favorite />
+                                <span>Single</span>
+                            </ProfileState>
+                            <ProfileState>
+                                <School />
+                                <span>Study in university</span>
+                            </ProfileState>
+                        </ProfileStates>
+                        <hr />
+                        <FriendsList>
+                            <h2>Friends</h2>
+                            <Friends>
+                                <Friend>
+                                    <img src={`/${"assets/person/10.jpeg"}`} alt="" />
+                                    <span>Jolie </span> 
+                                </Friend>
+                                <Friend>
+                                    <img src={`/${"assets/person/9.jpeg"}`} alt="" />
+                                    <span>Merry</span>
+                                </Friend>
+                                <Friend>
+                                    <img src={`/${"assets/person/8.jpeg"}`} alt="" />
+                                    <span>Kitty</span>
+                                </Friend>
+                                <Friend>
+                                    <img src={`/${"assets/person/7.jpeg"}`} alt="" />
+                                    <span>Youssef</span>
+                                </Friend>
+                                <Friend>
+                                    <img src={`/${"assets/person/6.jpeg"}`} alt="" />
+                                    <span>Shark</span>
+                                </Friend>
+                                <Friend>
+                                    <img src={`/${"assets/person/5.jpeg"}`} alt="" />
+                                    <span>Susan</span>
+                                </Friend>
+                            </Friends>
+                        </FriendsList>
+                    </AboutUser>
+                </Sticky>
             </BottomProfile>
         </MainProfile>
     );
@@ -49,6 +91,9 @@ export default ProfileChatApp;
 const MainProfile = styled.div`
     overflow-y: scroll;
     scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 const TopProfile = styled.div`
@@ -77,10 +122,13 @@ const ProfileUserImg = styled.img`
 `;
 
 const CenterProfile = styled.div`
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    border-bottom: 2px solid var(--grey-300);
+    padding-bottom: 2rem;
 `;
 
 const ProfileInfo = styled.div`
@@ -134,8 +182,91 @@ const EditProfile = styled(AddStory)`
     color: var(--main);
 `;
 
-const ProfileStates = styled.div``;
+const AboutUser = styled.div`
+    position: sticky;
+    top: 0.01rem;
+    padding: 1.3rem;
+    border-left: 2px solid var(--grey-300);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    hr {
+        background-color: var(--grey-300);
+        height: 2.5px;
+        width: 80%;
+        margin: 1rem 0;
+    }
+    h2 {
+        font-family: "Montserrat";
+        font-weight: 700;
+        font-size: 1.3rem;
+        letter-spacing: 0.15rem;
+        margin-left: 0.1rem;
+        margin-bottom: 0.7rem;
+    }
+`;
 
-const ProfileState = styled.div``;
+const ProfileStates = styled.div`
+    width: 100%;
+`;
 
-const BottomProfile = styled.div``
+const FriendsList = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+`;
+
+const ProfileState = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--grey-500);
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+`;
+
+const Friends = styled.div`
+    margin-top: 0.3rem;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem 0.3rem;
+`;
+const Friend = styled.div`
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+    transition: background border-radius 250ms ease-in-out;
+    img {
+        width: 90px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    span {
+        font-size: 0.85rem;
+        font-family: "Poppins";
+        letter-spacing: 0.1rem;
+        color: var(--grey-600);
+    }
+    &:hover {
+        background-color: var(--grey-400);
+        border-radius: 10px;
+    }
+`;
+
+const BottomProfile = styled.div`
+    display: grid;
+    grid-template-columns: 70% 30%;
+`;
+
+const Sticky = styled.div`
+    position: relative;
+    top: 0px;
+`;

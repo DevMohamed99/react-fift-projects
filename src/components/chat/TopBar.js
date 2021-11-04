@@ -15,36 +15,43 @@ import {
     SupervisedUserCircleOutlined,
     Subscriptions,
     Store,
-    AccountCircleOutlined,
-    BookmarkBorderOutlined,
-    LocalOfferOutlined,
-    ReportOutlined,
     MoreVert,
     ForumOutlined,
     NotificationsActiveOutlined,
+    LogoutOutlined,
 } from "@mui/icons-material";
 import { Avatar, IconButton } from "@mui/material";
-// import { useDispatch } from "react-redux";
-// import { userLogged } from "../../features/users/usersSlice";
 import DropDown from "../DropDown";
 import { Link } from "react-router-dom";
 import useBarState from "../Custom/useBarState";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    getActiveMenuItem,
+    getAllStates,
+    setMenuState,
+} from "../../features/components/useMenuState";
+import {userLogged} from "../../features/users/usersSlice";
 
 function TopBar() {
-    // const dispatch = useDispatch();
-    // const handle = () => {
-    //     dispatch(userLogged(false));
-    // };
 
-    // focus element on NavBar
-    const [onFocus, onFocusHandler, getActiveElem] = useBarState({
-        stateHome: true,
-        statePages: false,
-        stateVideos: false,
-        stateMarket: false,
-        stateFriends: false,
-        stateProfile: false,
-    });
+    // ? focus element on NavBar
+    const dispatch = useDispatch();
+    const handle = () => {
+        dispatch(userLogged(false));
+    };
+
+    // * get all states menu
+    const allStatesMenu = useSelector(getAllStates);
+    // * get active menu item
+    const isActiveMenuItem = useSelector(getActiveMenuItem);
+    const payloadState = { activeState: isActiveMenuItem, currentState: "" };
+    // ? a function for updating a state menu item
+    const changeStateMenu = (state, currentState) => {
+        if (!state) {
+            payloadState.currentState = currentState;
+            dispatch(setMenuState(payloadState));
+        }
+    };
 
     const [onSelect, OnSelectHandler, getActiveSelector] = useBarState({
         stateAdd: false,
@@ -56,28 +63,14 @@ function TopBar() {
     const options = [
         {
             id: 1,
-            icon: <AccountCircleOutlined />,
-            name: "Profile",
+            icon: <LogoutOutlined />,
+            name: "LogOut",
             arrow: false,
+            click: ()=>{handle()},
+            isLink: true,
+            linked: "/apis-ui/clone-facebook/home",
         },
-        {
-            id: 2,
-            icon: <BookmarkBorderOutlined />,
-            name: "Save Post",
-            arrow: false,
-        },
-        {
-            id: 3,
-            icon: <LocalOfferOutlined />,
-            name: "Tag Photo",
-            arrow: false,
-        },
-        {
-            id: 4,
-            icon: <ReportOutlined />,
-            name: "Report Post",
-            arrow: false,
-        },
+      
     ];
 
     return (
@@ -93,16 +86,12 @@ function TopBar() {
                 </SearchBar>
             </Left>
             <Middle>
-                <Link to="/clone-facebook/home">
+                <Link to="/apis-ui/clone-facebook/home">
                     <CenterMenu
-                        className={onFocus.stateHome && "topBar-active"}
-                        onClick={() => {
-                            if (!onFocus.stateHome) {
-                                onFocusHandler(getActiveElem(), "stateHome");
-                            }
-                        }}
-                        onfocus={onFocus.stateHome}>
-                        {onFocus.stateHome ? (
+                        className={allStatesMenu.stateHome && "topBar-active"}
+                        onClick={() => changeStateMenu(allStatesMenu.stateHome, "stateHome")}
+                        onfocus={allStatesMenu.stateHome}>
+                        {allStatesMenu.stateHome ? (
                             <Home fontSize="large" />
                         ) : (
                             <HomeOutlined fontSize="large" />
@@ -110,65 +99,48 @@ function TopBar() {
                     </CenterMenu>
                 </Link>
 
-                <Link to="/clone-facebook/pages">
+                <Link to="/apis-ui/clone-facebook/pages">
                     <CenterMenu
-                        className={onFocus.statePages && "topBar-active"}
-                        onClick={() => {
-                            if (!onFocus.statePages) {
-                                onFocusHandler(getActiveElem(), "statePages");
-                            }
-                        }}
-                        onfocus={onFocus.statePages}>
-                        {onFocus.statePages ? (
+                        className={allStatesMenu.statePages && "topBar-active"}
+                        onClick={() => changeStateMenu(allStatesMenu.statePages, "statePages")}
+                        onfocus={allStatesMenu.statePages}>
+                        {allStatesMenu.statePages ? (
                             <Flag fontSize="large" />
                         ) : (
                             <FlagOutlined fontSize="large" />
                         )}
                     </CenterMenu>
                 </Link>
-                <Link to="/clone-facebook/videos">
+                <Link to="/apis-ui/clone-facebook/videos">
                     <CenterMenu
-                        className={onFocus.stateVideos && "topBar-active"}
-                        onClick={() => {
-                            if (!onFocus.stateVideos) {
-                                onFocusHandler(getActiveElem(), "stateVideos");
-                            }
-                        }}
-                        onfocus={onFocus.stateVideos}>
-                        {onFocus.stateVideos ? (
+                        className={allStatesMenu.stateVideos && "topBar-active"}
+                        onClick={() => changeStateMenu(allStatesMenu.stateVideos, "stateVideos")}
+                        onfocus={allStatesMenu.stateVideos}>
+                        {allStatesMenu.stateVideos ? (
                             <Subscriptions fontSize="large" />
                         ) : (
                             <SubscriptionsOutlined fontSize="large" />
                         )}
                     </CenterMenu>
                 </Link>
-                <Link to="/clone-facebook/market-place">
+                <Link to="/apis-ui/clone-facebook/market-place">
                     <CenterMenu
-                        className={onFocus.stateMarket && "topBar-active"}
-                        onClick={() => {
-                            if (!onFocus.stateMarket) {
-                                onFocusHandler(getActiveElem(), "stateMarket");
-                            }
-                        }}
-                        onfocus={onFocus.stateMarket}>
-                        {" "}
-                        {onFocus.stateMarket ? (
+                        className={allStatesMenu.stateMarket && "topBar-active"}
+                        onClick={() => changeStateMenu(allStatesMenu.stateMarket, "stateMarket")}
+                        onfocus={allStatesMenu.stateMarket}>
+                        {allStatesMenu.stateMarket ? (
                             <Store fontSize="large" />
                         ) : (
                             <StoreOutlined fontSize="large" />
                         )}
                     </CenterMenu>
                 </Link>
-                <Link to="/clone-facebook/friends">
+                <Link to="/apis-ui/clone-facebook/friends">
                     <CenterMenu
-                        className={onFocus.stateFriends && "topBar-active"}
-                        onClick={() => {
-                            if (!onFocus.stateFriends) {
-                                onFocusHandler(getActiveElem(), "stateFriends");
-                            }
-                        }}
-                        onfocus={onFocus.stateFriends}>
-                        {onFocus.stateFriends ? (
+                        className={allStatesMenu.stateFriends && "topBar-active"}
+                        onClick={() => changeStateMenu(allStatesMenu.stateFriends, "stateFriends")}
+                        onfocus={allStatesMenu.stateFriends}>
+                        {allStatesMenu.stateFriends ? (
                             <SupervisedUserCircle fontSize="large" />
                         ) : (
                             <SupervisedUserCircleOutlined fontSize="large" />
@@ -177,15 +149,11 @@ function TopBar() {
                 </Link>
             </Middle>
             <Right>
-                <Link to="/clone-facebook/profile">
+                <Link to="/apis-ui/clone-facebook/profile">
                     <Info
-                        className={onFocus.stateProfile && "profile"}
-                        onfocus={onFocus.stateProfile}
-                        onClick={() => {
-                            if (!onFocus.stateProfile) {
-                                onFocusHandler(getActiveElem(), "stateProfile");
-                            }
-                        }}>
+                        className={allStatesMenu.stateProfile && "profile"}
+                        onfocus={allStatesMenu.stateProfile}
+                        onClick={() => changeStateMenu(allStatesMenu.stateProfile, "stateProfile")}>
                         <Avatar />
                         <span>Name Name</span>
                     </Info>

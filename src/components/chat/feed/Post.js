@@ -5,12 +5,10 @@ import {
     ThumbUp,
     ChatBubbleOutline,
     NearMe,
- 
     AccountCircleOutlined,
     BookmarkBorderOutlined,
     LocalOfferOutlined,
     ReportOutlined,
-
     MoreVert,
 } from "@mui/icons-material";
 import DropDown from "../../DropDown";
@@ -202,7 +200,7 @@ const Counter = styled.div`
         }
     }
     .img1 {
-        margin-right: -0.6rem;
+        margin-right: -0.8rem;
         z-index: 1;
     }
 `;
