@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     user: {
-        isLogged: true,
+        isLogged: false,
         name: "",
         profilePic: "",
     },
@@ -28,5 +28,6 @@ export const { userState, userLogged } = usersSlice.actions;
 export const getLoginState = (state) => state.users.user.isLogged;
 export const getName = (state) => state.users.user.name;
 export const getProfilePic = (state) => state.users.user.profilePic;
+export const getUser = (state) => state.users.user;
 
 export default usersSlice.reducer;

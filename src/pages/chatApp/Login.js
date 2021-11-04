@@ -3,7 +3,7 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase-config";
 import { useDispatch, useSelector } from "react-redux";
 import { getLoginState, userState } from "../../features/users/usersSlice";
-import {Redirect} from "react-router";
+import { Redirect } from "react-router";
 
 function Login() {
     const isLoggedIn = useSelector(getLoginState);
@@ -38,7 +38,10 @@ function Login() {
                 />
                 <img src="https://www.logo.wine/a/logo/Facebook/Facebook-Logo.wine.svg" alt="" />
             </Logo>
-            <LoginButton onClick={signIn}>Sign In</LoginButton>
+            <LoginButton onClick={signIn}>
+                <img src="/images/google.png" alt="" />
+                <span>Sign In With Google</span>
+            </LoginButton>
         </MainLogin>
     );
 }
@@ -62,17 +65,31 @@ const Logo = styled.div`
     }
 `;
 
-const LoginButton = styled.button`
-    background-color: var(--blue-500);
-    color: var(--main);
-    width: 300px;
-    padding: 0.5rem 0;
-    letter-spacing: 0.15rem;
-    font-family: "Roboto Mono";
-    font-weight: 500;
-    border-radius: 15px;
-
+const LoginButton = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border: 2px solid var(--main);
+    cursor: pointer;
+    padding: 0.5rem 4rem;
+    border-radius: 23px;
+    transition: background-color border color 250ms ease-in-out;
+    img {
+        width: 30px;
+        height: 30px;
+    }
+    span {
+        color: var(--main);
+        letter-spacing: 0.15rem;
+        font-family: "Roboto Mono";
+        font-weight: 500;
+    }
     &:hover {
-        opacity: 0.8;
+        border-color: var(--main);
+        background-color: var(--main);
+        span{
+            color: var(--body-bg);
+        }
     }
 `;

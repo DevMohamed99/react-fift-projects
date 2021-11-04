@@ -30,12 +30,13 @@ import {
     getAllStates,
     setMenuState,
 } from "../../features/components/useMenuState";
-import {userLogged} from "../../features/users/usersSlice";
+import {getUser, userLogged} from "../../features/users/usersSlice";
 
 function TopBar() {
 
-    // ? focus element on NavBar
+    const user = useSelector(getUser);
     const dispatch = useDispatch();
+    // ? a function for logout
     const handle = () => {
         dispatch(userLogged(false));
     };
@@ -48,6 +49,7 @@ function TopBar() {
     // ? a function for updating a state menu item
     const changeStateMenu = (state, currentState) => {
         if (!state) {
+            // ? focus element on NavBar
             payloadState.currentState = currentState;
             dispatch(setMenuState(payloadState));
         }
@@ -154,8 +156,8 @@ function TopBar() {
                         className={allStatesMenu.stateProfile && "profile"}
                         onfocus={allStatesMenu.stateProfile}
                         onClick={() => changeStateMenu(allStatesMenu.stateProfile, "stateProfile")}>
-                        <Avatar />
-                        <span>Name Name</span>
+                        <Avatar src={user.profilePic} />
+                        <span>{(user.name.length < 9) ? user.name.slice(0,9)+".." : user.name }</span>
                     </Info>
                 </Link>
                 <IconButton

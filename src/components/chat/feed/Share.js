@@ -3,8 +3,13 @@ import { PermMedia, EmojiEmotions, Videocam, Send } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 import { useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
+import {useSelector} from "react-redux";
+import {getProfilePic} from "../../../features/users/usersSlice";
 
 function Share() {
+
+    const userProfilePic = useSelector(getProfilePic);
+
     const [inputValue, setInputValue] = useState("");
     const [imageUrl, setImageUrl] = useState("");
 
@@ -18,7 +23,7 @@ function Share() {
     return (
         <MainShare>
             <ShareTop>
-                <Avatar src="/assets/person/2.jpeg" />
+                <Avatar src={userProfilePic ? userProfilePic :"/assets/person/2.jpeg"} />
                 <form>
                     <TextareaAutosize
                         placeholder="What's in your mind ..."
