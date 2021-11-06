@@ -1,17 +1,21 @@
 import { Add, EditRounded, Favorite, Home, School, Work } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { getUser } from "../../features/users/usersSlice";
 import Feed from "./FeedPages/Feed";
 
 function ProfileChatApp() {
+    const user = useSelector(getUser);
+
     return (
         <MainProfile>
             <TopProfile>
                 <CoverImg src={`/${"assets/post/3.jpeg"}`} alt="" />
-                <ProfileUserImg src={`/${"assets/person/7.jpeg"}`} />
+                <ProfileUserImg src={user.profilePic} />
             </TopProfile>
             <CenterProfile>
                 <ProfileInfo>
-                    <h4>Youness hassan</h4>
+                    <h4>{user.name}</h4>
                     <p>
                         Lorem ipsum dolor sit am Lorem ipsum dolor sit am Lorem ipsum d Lorem ipsum
                         dolor sit am Lore
@@ -55,7 +59,7 @@ function ProfileChatApp() {
                             <Friends>
                                 <Friend>
                                     <img src={`/${"assets/person/10.jpeg"}`} alt="" />
-                                    <span>Jolie </span> 
+                                    <span>Jolie </span>
                                 </Friend>
                                 <Friend>
                                     <img src={`/${"assets/person/9.jpeg"}`} alt="" />
