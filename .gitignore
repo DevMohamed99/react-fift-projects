@@ -11,6 +11,10 @@
 # production
 /build
 
+# ? ignore Files
+/src/firebase-config.js
+/public/files/CV Mohamed (3).pdf
+
 # misc
 .DS_Store
 .env.local

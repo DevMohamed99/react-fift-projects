@@ -26,7 +26,7 @@
 }
 
 /* ? Css  */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;500;600&family=Roboto+Mono:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,500&display=swap");
 
@@ -76,7 +76,7 @@
     --black: #222;
     --white: #fff;
     --red-light: #f8d7da;
-    --red-dark: #f8071baf;
+    --red-dark: hsl(355, 94%, 50%);
     --orange: #eb520cbe;
     --green-light: #d1e7dd;
     --green-dark: #0b9e59e8;
@@ -85,7 +85,7 @@
     --yellow-dark: #6b5d00;
     --clr-pink: #f28ab2;
     --gold-clr: #fad91be1;
-    --green: hsl(135, 93%, 50%);
+    --green: hsl(135, 83%, 47%);
     --blue: hsl(207, 95%, 60%);
 
     --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
