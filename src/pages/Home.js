@@ -48,7 +48,8 @@ function Home() {
             <ContactMe Id="contactMe" />
             {/* // ! section Footer  */}
             <Footer>
-                <h4>Created in 09/21, @ All rights reserved 2021.</h4>
+                <Unicons.UilCopyright />
+                <h4>All rights reserved 2021, created in 09/21.</h4>
             </Footer>
         </Main>
     );
@@ -64,6 +65,7 @@ const Main = styled.main`
     height: 100vh;
     scrollbar-width: none;
     position: relative;
+    z-index: 0;
 `;
 
 // ! section Nav Bar
@@ -73,15 +75,14 @@ const HeaderProfiler = styled.div`
     position: sticky;
     top: 0;
     padding: 1.2rem 0 0.6rem;
-    margin: 0 auto;
-    width: 96%;
+    width: 100%;
     border-bottom: 1px solid var(--grey-300);
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: var(--grey-500);
     font-size: 1.1rem;
-    z-index: 3;
+z-index: 3;
     h1 {
         font-family: "Montserrat", sans-serif;
         font-weight: 600;
@@ -121,19 +122,28 @@ const MenuItem = styled.li`
         width: 20px;
         height: 20px;
     }
-    &:hover {
+    &:hover, &:focus-within {
         color: var(--blue-500);
     }
 `;
 
 // ! section Footer
 const Footer = styled.div`
-    text-align: center;
-    background-color: var(--grey-700);
+    width: 100%;
+    background-color: var(--main);
     padding: 0.9rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--grey-300);
+    gap: 0.5rem;
     h4 {
-        font-family: "Roboto Mono", monospace;
-        font-weight: 300;
-        color: var(--grey-100);
+        font-family: "Roboto Mono";
+        font-weight: 500;
+        letter-spacing: 0.2rem;
+    }
+    svg {
+        width: 19px;
+        height: 19px;
     }
 `;

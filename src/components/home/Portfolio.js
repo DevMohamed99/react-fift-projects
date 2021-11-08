@@ -3,17 +3,17 @@ import * as Unicons from "@iconscout/react-unicons";
 import { Typewriter } from "react-simple-typewriter";
 import { Link } from "react-router-dom";
 
-function Portfolio({Id}) {
+function Portfolio({ Id }) {
     return (
-        <PortfolioMain id={Id} >
+        <PortfolioMain id={Id}>
             <PortfolioContent>
                 <PortfolioWelcome>
                     <h1>Hi!, I'am EL Moumny Mohamed</h1>
                     <h3>Web Developer</h3>
                     <p>
-                        I have experience and knowledge in web development using react js and other libraries
-                        like react router dom, redux-toolkit ... and for styling styled components,
-                        tailwindcss framework ...
+                        I have knowledge and experience in web development I'm using VS code as editor and
+                        Github with his control tool Git in my workplace and other things to help me get best
+                        experience of coding <span><a href="#contactMe">Show More</a></span>
                     </p>
                     <PortfolioSocial>
                         <a href="/#contactMe" className="contactMe">
@@ -35,7 +35,7 @@ function Portfolio({Id}) {
                 </PortfolioWelcome>
                 <PortfolioImage>
                     <img
-                        src="https://res.cloudinary.com/dymdvunmm/image/upload/v1636229079/react/profilePic-min_biwlmk.png"
+                        src="https://fuertedevelopers.in/wp-content/uploads/2020/08/aboutus.gif"
                         alt=""
                     />
                 </PortfolioImage>
@@ -116,6 +116,10 @@ const PortfolioWelcome = styled.div`
         color: var(--grey-500);
         letter-spacing: 0.05rem;
         margin-bottom: 0.9rem;
+        span{
+            color: var(--blue-500);
+            font-weight: 500;
+        }
     }
 `;
 

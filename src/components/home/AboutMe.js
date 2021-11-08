@@ -84,7 +84,7 @@ function AboutMe({ Id }) {
                                 </Bar>
                             </SkillBar>
                             <SkillBar>
-                                <span className="langue">Node JS</span>
+                                <span className="langue">Rest APIs</span>
                                 <span className="percantage learning">Still Learning</span>
                                 <Bar>
                                     <BarProgress barProgress="0%"></BarProgress>
