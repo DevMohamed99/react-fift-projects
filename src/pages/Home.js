@@ -1,65 +1,85 @@
 import styled from "styled-components";
 import * as Unicons from "@iconscout/react-unicons";
-import { AboutMe, ContactMe, MyProjects, Portfolio } from "../components";
+import { AboutMe, MyProjects, Portfolio } from "../components";
+import { useState, useEffect } from "react";
 
 function Home() {
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        function handleResize() {
+            setWidth(window.innerWidth);
+        }
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [width]);
+
     return (
         <Main>
-            {/* // ! section NavBar */}
-            <HeaderProfiler>
-                <h1>𝓔𝓛 𝓜𝓸𝓾𝓶𝓷𝔂</h1>
-                <MenuItems>
-                    <MenuItem>
-                        <a href="/#portfolio">
-                            <Unicons.UilScenery />
-                            <span>Portfolio</span>
-                        </a>
-                    </MenuItem>
-                    <MenuItem>
-                        <a href="/#aboutMe">
-                            <Unicons.UilUser />
-                            <span>About</span>
-                        </a>
-                    </MenuItem>
-                    <MenuItem>
-                        <a href="/#projects">
-                            <Unicons.UilConstructor />
-                            <span>Projects</span>
-                        </a>
-                    </MenuItem>
-                    <MenuItem>
-                        <a href="/#contactMe">
-                            <Unicons.UilMessage />
-                            <span>Contact Me</span>
-                        </a>
-                    </MenuItem>
-                    <MenuItem>
-                        <Unicons.UilMoon />
-                    </MenuItem>
-                </MenuItems>
-            </HeaderProfiler>
-            {/* // !  section Portfolio */}
-            <Portfolio Id="portfolio" />
-            {/*  // ! section About Me */}
-            <AboutMe Id="aboutMe" />
-            {/* // ! section Projects  */}
-            <MyProjects Id="projects" />
-            {/* // ! section Contact Me  */}
-            <ContactMe Id="contactMe" />
-            {/* // ! section Footer  */}
-            <Footer>
-                <Unicons.UilCopyright />
-                <h4>All rights reserved 2021, created in 09/21.</h4>
-            </Footer>
+            <MainHome>
+                {/* // ! section NavBar */}
+                <HeaderProfiler>
+                    <h1>𝓔𝓛 𝓜𝓸𝓾𝓶𝓷𝔂</h1>
+                    <MenuItems>
+                        <MenuItem>
+                            <a href="/#home">
+                                <Unicons.UilEstate />
+                                <span>Home</span>
+                            </a>
+                        </MenuItem>
+                        <MenuItem>
+                            <a href="/#aboutMe">
+                                <Unicons.UilUser />
+                                <span>About</span>
+                            </a>
+                        </MenuItem>
+                        <MenuItem>
+                            <a href="/#projects">
+                                <Unicons.UilConstructor />
+                                <span>Projects</span>
+                            </a>
+                        </MenuItem>
+                    </MenuItems>
+                </HeaderProfiler>
+                {/* // !  section Portfolio */}
+                <Portfolio Id="home" />
+                {/* // ! section About Me */}
+                <AboutMe Id="aboutMe" screenWidth={width} />
+                {/* // ! section Projects  */}
+                <MyProjects Id="projects" />
+                {/* // ! section Contact Me  */}
+                {/* <ContactMe Id="contactMe" /> */}
+                {/* // ! section Footer  */}
+                <Footer mBNavBar={width <= 600 && "2rem"}>
+                    <h4>All rights reserved 2021, created in 09/21.</h4>
+                </Footer>
+            </MainHome>
+            <BottomNavBar Display={width <= 610 ? "flex" : "none"}>
+                <a href="/#home">
+                    <Unicons.UilEstate />
+                </a>
+                <a href="/#aboutMe">
+                    <Unicons.UilUser />
+                </a>
+                <a href="/#projects">
+                    <Unicons.UilConstructor />
+                </a>
+            </BottomNavBar>
         </Main>
     );
 }
 
 export default Home;
 
-const Main = styled.main`
+const Main = styled.div`
+    position: relative;
+`;
+
+const MainHome = styled.main`
     background-color: var(--grey-200);
-    width: 90%;
     margin: 0 auto;
     overflow-y: auto;
     height: 100vh;
@@ -74,7 +94,7 @@ const HeaderProfiler = styled.div`
     background-color: var(--grey-200);
     position: sticky;
     top: 0;
-    padding: 1.2rem 0 0.6rem;
+    padding: 1rem 2rem 0.6rem;
     width: 100%;
     border-bottom: 1px solid var(--grey-300);
     display: flex;
@@ -82,7 +102,7 @@ const HeaderProfiler = styled.div`
     justify-content: space-between;
     color: var(--grey-500);
     font-size: 1.1rem;
-z-index: 3;
+    z-index: 3;
     h1 {
         font-family: "Montserrat", sans-serif;
         font-weight: 600;
@@ -90,6 +110,16 @@ z-index: 3;
         cursor: pointer;
         &:hover {
             color: var(--blue-500);
+        }
+    }
+    @media (max-width: 610px) {
+        justify-content: center;
+        padding-top: 0.6rem;
+        ul {
+            display: none;
+        }
+        h1 {
+            font-size: 1.15rem;
         }
     }
 `;
@@ -122,7 +152,8 @@ const MenuItem = styled.li`
         width: 20px;
         height: 20px;
     }
-    &:hover, &:focus-within {
+    &:hover,
+    &:focus-within {
         color: var(--blue-500);
     }
 `;
@@ -131,6 +162,7 @@ const MenuItem = styled.li`
 const Footer = styled.div`
     width: 100%;
     background-color: var(--main);
+    margin-bottom: ${(props) => (props.mBNavBar ? props.mBNavBar : "0")};
     padding: 0.9rem 0;
     display: flex;
     justify-content: center;
@@ -142,8 +174,29 @@ const Footer = styled.div`
         font-weight: 500;
         letter-spacing: 0.2rem;
     }
+    @media (max-width: 600px) {
+        align-items: flex-start;
+        padding: 0.9rem;
+        h4 {
+            font-size: 0.9rem;
+            text-align: center;
+        }
+    }
+`;
+
+const BottomNavBar = styled.div`
+    background-color: var(--grey-200);
+    border-top: 1px solid var(--grey-400);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: ${(props) => props.Display};
+    align-items: center;
+    justify-content: space-around;
+    color: var(--grey-500);
+    padding: 0.2rem 0;
     svg {
-        width: 19px;
-        height: 19px;
+        width: 35px;
+        height: 35px;
     }
 `;

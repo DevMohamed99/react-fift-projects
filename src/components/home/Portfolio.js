@@ -13,13 +13,9 @@ function Portfolio({ Id }) {
                     <p>
                         I have knowledge and experience in web development I'm using VS code as editor and
                         Github with his control tool Git in my workplace and other things to help me get best
-                        experience of coding <span><a href="#contactMe">Show More</a></span>
+                        experience of coding ...
                     </p>
                     <PortfolioSocial>
-                        <a href="/#contactMe" className="contactMe">
-                            Contact Me
-                            <Unicons.UilMessage />
-                        </a>
                         <Social>
                             <Link to={{ pathname: "https://github.com/Mohamedsol99" }} target="_blank">
                                 <Unicons.UilGithub className="githubIcon" />
@@ -34,10 +30,7 @@ function Portfolio({ Id }) {
                     </PortfolioSocial>
                 </PortfolioWelcome>
                 <PortfolioImage>
-                    <img
-                        src="https://fuertedevelopers.in/wp-content/uploads/2020/08/aboutus.gif"
-                        alt=""
-                    />
+                    <img src="https://fuertedevelopers.in/wp-content/uploads/2020/08/aboutus.gif" alt="" />
                 </PortfolioImage>
                 <PortfolioGoals>
                     <span>
@@ -69,11 +62,13 @@ const PortfolioMain = styled.div`
 `;
 
 const PortfolioContent = styled.div`
-    height: 780px;
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 75% 20%;
-    gap: 0 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    place-items: center;
+    @media (max-width: 780px) {
+        grid-template-columns: repeat(1, minmax(150px, 1fr));
+    }
 `;
 
 const PortfolioImage = styled.div`
@@ -93,7 +88,6 @@ const PortfolioWelcome = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    margin-left: 2rem;
     width: 80%;
     h1 {
         text-transform: uppercase;
@@ -116,9 +110,18 @@ const PortfolioWelcome = styled.div`
         color: var(--grey-500);
         letter-spacing: 0.05rem;
         margin-bottom: 0.9rem;
-        span{
+        span {
             color: var(--blue-500);
             font-weight: 500;
+        }
+    }
+    @media (max-width: 780px) {
+        align-items: center;
+        margin-top: 1.5rem;
+        h3,
+        h1,
+        p {
+            text-align: center;
         }
     }
 `;
@@ -127,23 +130,6 @@ const PortfolioSocial = styled.div`
     margin-top: 1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
-    .contactMe {
-        width: 12rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        font-family: "Poppins";
-        font-weight: 600;
-        font-size: 1.05rem;
-        background-color: var(--blue-500);
-        padding: 1rem 1rem;
-        color: var(--body-bg);
-        border-radius: 19px;
-        margin-right: 12rem;
-        letter-spacing: 0.12rem;
-    }
 `;
 
 const Social = styled.div`
@@ -176,5 +162,12 @@ const PortfolioGoals = styled.div`
     span {
         color: var(--primary-color);
         letter-spacing: 0.1rem;
+        width: 86%;
+        margin: 0 auto;
+    }
+    @media (max-width: 780px) {
+        grid-column: 1/2;
+        grid-row: 3/4;
+        font-size: 1rem;
     }
 `;

@@ -2,16 +2,40 @@ import styled from "styled-components";
 import * as Unicons from "@iconscout/react-unicons";
 import { SectionHeading } from "..";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import axios from "axios";
+
+toast.custom();
 
 function ContactMe({ Id }) {
+    // const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    const sendData = async (data) => {
+        await axios
+            .post(
+                `https://script.google.com/macros/s/AKfycbyq_hHa48hfkAw7ay99RptCvqqg3PJBR8PwhfZt1o2Yg-JmNsrzs3VGV2YvxSFd43UM/exec`,
+                data,
+                { headers: { "Access-Control-Allow-Origin": "*" } }
+            )
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     const {
         register,
         handleSubmit,
-        // formState: { errors },
+        formState: { errors },
     } = useForm();
     const onSubmit = (data) => {
         console.log(data);
-    }
+        const postData = "DATA=" + data.fullName + "," + data.email + "," + data.message;
+        sendData(postData);
+    };
+
+    console.log(errors);
+
     return (
         <ContactMeMain id={Id}>
             <SectionHeading textHeading="Contact Me" mT="5rem" mB="5rem" />
@@ -55,7 +79,7 @@ function ContactMe({ Id }) {
                                 <input
                                     type="text"
                                     placeholder="Full Name"
-                                    {...register("fullName", { required: true })}
+                                    {...register("fullName", { required: "Full Name is required" })}
                                 />
                             </FullNameInput>
                             <EmailInput className="email">
@@ -64,14 +88,15 @@ function ContactMe({ Id }) {
                                 <input
                                     type="email"
                                     placeholder="example@gmail.com"
-                                    {...register("email", { required: true })}
+                                    {...register("email", { required: "Email is required" })}
                                 />
                             </EmailInput>
+
                             <textarea
                                 placeholder="What's in your mind ..."
                                 type="text"
                                 maxrows="5"
-                                {...register("message", { required: true })}
+                                {...register("message", { required: "Message is required" })}
                             />
                             <ContactSendMessage>
                                 <span>Send</span>
@@ -213,6 +238,23 @@ const ContactFullDetails = styled.form`
             border-color: var(--blue);
         }
     }
+    .input-sty,
+    .slc-country {
+        border: none;
+        background-color: transparent;
+    }
+    .input-sty {
+        height: auto;
+    }
+    .slc-country {
+        border: none;
+        .selected-flag:hover,
+        .selected-flag:focus {
+            background-color: transparent;
+        }
+    }
+    .btn-country {
+    }
     hr {
         height: 60%;
         width: 2px;
@@ -221,6 +263,7 @@ const ContactFullDetails = styled.form`
     input {
         background-color: transparent;
     }
+
     input,
     textarea {
         width: 100%;

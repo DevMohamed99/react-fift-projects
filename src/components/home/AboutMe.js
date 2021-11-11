@@ -3,10 +3,14 @@ import { SectionHeading } from "..";
 import * as Unicons from "@iconscout/react-unicons";
 import { ErrorOutline } from "@mui/icons-material";
 
-function AboutMe({ Id }) {
+function AboutMe({ Id, screenWidth }) {
     return (
         <AboutMeMain id={Id}>
-            <SectionHeading textHeading="About Me" mT="5rem" mB="2rem" />
+            <SectionHeading
+                textHeading="About Me"
+                mT={screenWidth >= 600 ? "5rem" : "1.5rem"}
+                mB={screenWidth >= 600 ? "2rem" : "1.5rem"}
+            />
             <AboutMeContent>
                 <h2>Who Am I ?</h2>
                 <AboutMySelf>
@@ -108,8 +112,7 @@ function AboutMe({ Id }) {
                     </AboutMeCard>
                 </AboutMeCards>
                 <span className="waring">
-                    <ErrorOutline />
-                    * Note : This progress will be updating ... 
+                    <ErrorOutline />* Note : This progress will be updating ...
                 </span>
             </AboutMeContent>
         </AboutMeMain>
@@ -149,24 +152,37 @@ const AboutMeContent = styled.div`
             bottom: -24%;
         }
     }
-    .waring{
+    .waring {
+        text-align: center;
         color: var(--primary-color);
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: .5rem;
+        gap: 0.5rem;
         margin: 1.2rem 0;
-        svg{
+        svg {
             width: 20px;
             height: 20px;
         }
 
+        @media (max-width: 600px) {
+            width: 90vw;
+            align-items: flex-start;
+            svg {
+                display: none;
+            }
+        }
+    }
+    @media (max-width: 600px) {
+        h2 {
+            margin-top: 1.4rem;
+            font-size: 1.1rem;
+        }
     }
 `;
 
 const AboutMySelf = styled.div`
-    width: 45%;
-    margin: 0 auto;
+    width: 93%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -177,6 +193,7 @@ const AboutMySelf = styled.div`
         margin-bottom: 0.6rem;
     }
     p {
+        max-width: 700px;
         padding: 0 1rem;
         text-align: center;
         font-size: 0.95rem;
@@ -195,10 +212,18 @@ const Buttons = styled.div`
     display: flex;
     align-items: center;
     gap: 3rem;
+    @media (max-width: 600px) {
+        flex-direction: column;
+        width: 100%;
+        gap: 1.5rem;
+    }
 `;
 
 const CVButton = styled.div`
-    padding: 1rem 2rem;
+    min-width: 220px;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
     background-color: var(--blue);
     border-radius: 33px;
     border: 2px solid var(--blue);
@@ -217,6 +242,13 @@ const CVButton = styled.div`
         background-color: transparent;
         color: var(--main);
     }
+    @media (max-width: 600px) {
+        width: 85%;
+        color: var(--main);
+        &:hover {
+            background-color: var(--blue);
+        }
+    }
 `;
 
 const ContactMeButton = styled(CVButton)`
@@ -226,14 +258,26 @@ const ContactMeButton = styled(CVButton)`
         background-color: var(--blue);
         color: var(--body-bg);
     }
+    @media (max-width: 600px) {
+        background-color: var(--main);
+        border-color: var(--main);
+        color: var(--body-bg);
+        &:hover {
+            background-color: var(--main);
+        }
+    }
 `;
 
 const AboutMeCards = styled.div`
-    width: 100%;
+    width: 90%;
     display: grid;
-    grid-template-columns: 27% 27%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-content: center;
     gap: 3rem;
+    @media (max-width: 900px) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        width: 90%;
+    }
 `;
 
 const AboutMeCard = styled.div`
@@ -292,6 +336,9 @@ const SkillBar = styled.div`
     }
     .learning {
         color: var(--primary-color);
+    }
+    @media (max-width: 600px) {
+        font-size: 0.85rem;
     }
 `;
 
