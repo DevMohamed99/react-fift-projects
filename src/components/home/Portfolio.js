@@ -2,10 +2,26 @@ import styled from "styled-components";
 import * as Unicons from "@iconscout/react-unicons";
 import { Typewriter } from "react-simple-typewriter";
 import { Link } from "react-router-dom";
+import { CustomHeight } from "..";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getNavBarHeightState, setNavBarHeight } from "../../features/components/useActiveNav";
 
 function Portfolio({ Id }) {
+    const dispatch = useDispatch();
+    const reduxHeight = useSelector(getNavBarHeightState);
+    const payload = { stateName: "Home", stateHeight: 0 };
+    const { observe, height } = CustomHeight();
+
+    useEffect(() => {
+        if (height !== reduxHeight.Home) {
+            payload.stateHeight = height;
+            dispatch(setNavBarHeight(payload));
+        }
+    });
+
     return (
-        <PortfolioMain id={Id}>
+        <PortfolioMain id={Id} ref={observe}>
             <PortfolioContent>
                 <PortfolioWelcome>
                     <h1>Hi!, I'am EL Moumny Mohamed</h1>
@@ -62,11 +78,16 @@ const PortfolioMain = styled.div`
 `;
 
 const PortfolioContent = styled.div`
+    min-height: 700px;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
     place-items: center;
-    @media (max-width: 780px) {
+    @media (max-width: 920px) {
+        margin-top: 1rem;
+        gap: 2rem 0;
+    }
+    @media (max-width: 800px) {
         grid-template-columns: repeat(1, minmax(150px, 1fr));
     }
 `;
@@ -79,7 +100,7 @@ const PortfolioImage = styled.div`
     img {
         object-fit: contain;
         width: 700px;
-        height: 500px;
+        min-height: 300px;
     }
 `;
 
@@ -115,13 +136,20 @@ const PortfolioWelcome = styled.div`
             font-weight: 500;
         }
     }
-    @media (max-width: 780px) {
+    @media (max-width: 800px) {
         align-items: center;
         margin-top: 1.5rem;
+        gap: 0.7rem;
         h3,
-        h1,
-        p {
+        h1 {
             text-align: center;
+        }
+        p {
+            font-size: 1rem;
+            text-align: justify;
+        }
+        h3 {
+            font-size: 1.5rem;
         }
     }
 `;
@@ -153,6 +181,7 @@ const Social = styled.div`
 `;
 
 const PortfolioGoals = styled.div`
+    width: 100%;
     grid-column: 1/3;
     text-align: center;
     display: flex;
@@ -162,12 +191,12 @@ const PortfolioGoals = styled.div`
     span {
         color: var(--primary-color);
         letter-spacing: 0.1rem;
-        width: 86%;
         margin: 0 auto;
     }
-    @media (max-width: 780px) {
+    @media (max-width: 800px) {
         grid-column: 1/2;
         grid-row: 3/4;
         font-size: 1rem;
+        width: 88%;
     }
 `;

@@ -27,7 +27,6 @@ const useMenuState = createSlice({
                 [payload.activeState]: false, // * was activeted
                 [payload.currentState]: true, // * will be active
             };
-          
         },
     },
 });

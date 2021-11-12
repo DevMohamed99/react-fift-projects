@@ -1,11 +1,26 @@
 import styled from "styled-components";
-import { SectionHeading } from "..";
+import { CustomHeight, SectionHeading } from "..";
 import * as Unicons from "@iconscout/react-unicons";
 import { ErrorOutline } from "@mui/icons-material";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getNavBarHeightState, setNavBarHeight } from "../../features/components/useActiveNav";
 
 function AboutMe({ Id, screenWidth }) {
+    const dispatch = useDispatch();
+    const reduxHeight = useSelector(getNavBarHeightState);
+    const payload = { stateName: "About", stateHeight: 0 };
+    const { observe, height } = CustomHeight();
+
+    useEffect(() => {
+        if (height !== reduxHeight.About) {
+            payload.stateHeight = height;
+            dispatch(setNavBarHeight(payload));
+        }
+    });
+
     return (
-        <AboutMeMain id={Id}>
+        <AboutMeMain id={Id} ref={observe}>
             <SectionHeading
                 textHeading="About Me"
                 mT={screenWidth >= 600 ? "5rem" : "1.5rem"}
@@ -203,6 +218,11 @@ const AboutMySelf = styled.div`
         span {
             color: var(--main);
             font-size: 0.9rem;
+        }
+    }
+    @media (max-width: 600px) {
+        p {
+            text-align: justify;
         }
     }
 `;

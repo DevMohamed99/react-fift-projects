@@ -2,24 +2,77 @@ import styled from "styled-components";
 import * as Unicons from "@iconscout/react-unicons";
 import { AboutMe, MyProjects, Portfolio } from "../components";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getNavBarHeightState } from "../features/components/useActiveNav";
+
+// Hook
 
 function Home() {
+    const getHeight = useSelector(getNavBarHeightState);
     const [width, setWidth] = useState(window.innerWidth);
+    const [scrolling, setScrolling] = useState(window.innerWidth);
 
     useEffect(() => {
         function handleResize() {
             setWidth(window.innerWidth);
         }
         window.addEventListener("resize", handleResize);
-
         return () => {
             window.removeEventListener("resize", handleResize);
         };
     }, [width]);
 
+    const handleActiveNav = (width, scrollPosition) => {
+        if (width >= 900) {
+            if (scrollPosition <= 716) {
+                return "home";
+            } else if (scrollPosition > 716 && scrollPosition <= 1280) {
+                return "about me";
+            } else {
+                return "projects";
+            }
+        } else if (width < 900) {
+            if (scrollPosition <= 716) {
+                return "home";
+            } else if (scrollPosition > 716 && scrollPosition <= 2080) {
+                return "about me";
+            } else {
+                return "projects";
+            }
+        } else if (width < 600) {
+            if (scrollPosition <= 856) {
+                return "home";
+            } else if (scrollPosition > 856 && scrollPosition <= 2280) {
+                return "about me";
+            } else {
+                return "projects";
+            }
+        } else if (width < 400 && width > 300) {
+            if (scrollPosition <= 876) {
+                return "home";
+            } else if (scrollPosition > 876 && scrollPosition <= 2300) {
+                return "about me";
+            } else {
+                return "projects";
+            }
+        } else {
+            if (scrollPosition <= 1050) {
+                return "home";
+            } else if (scrollPosition > 1050 && scrollPosition <= 2600) {
+                return "about me";
+            } else {
+                return "projects";
+            }
+        }
+    };
+
     return (
         <Main>
-            <MainHome>
+            <MainHome
+                onScroll={(e) => {
+                    setScrolling(e.target.scrollTop);
+                    console.log(handleActiveNav(width, scrolling));
+                }}>
                 {/* // ! section NavBar */}
                 <HeaderProfiler>
                     <h1>𝓔𝓛 𝓜𝓸𝓾𝓶𝓷𝔂</h1>
@@ -82,6 +135,7 @@ const MainHome = styled.main`
     background-color: var(--grey-200);
     margin: 0 auto;
     overflow-y: auto;
+    overflow-x: hidden;
     height: 100vh;
     scrollbar-width: none;
     position: relative;

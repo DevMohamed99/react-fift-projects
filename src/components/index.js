@@ -8,6 +8,7 @@ export { default as Share } from "./chat/feed/Share";
 export { default as Story } from "./chat/feed/Story";
 export { default as SectionHeading } from "./home/sectionHeading";
 export { default as AboutMe } from "./home/AboutMe";
-export { default as MyProjects } from "./home/MyProjects"
+export { default as MyProjects } from "./home/MyProjects";
 export { default as ContactMe } from "./home/ContactMe";
-export { default as Portfolio } from "./home/Portfolio"
+export { default as Portfolio } from "./home/Portfolio";
+export { default as CustomHeight } from "./CustomHeight";
