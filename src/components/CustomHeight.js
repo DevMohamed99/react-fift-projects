@@ -1,6 +1,7 @@
 import useDimensions from "react-cool-dimensions";
 
 function CustomHeight() {
+    // eslint-disable-next-line
     const { observe, unobserve, w, height, entry } = useDimensions({
         onResize: ({ observe, unobserve, width, height, entry }) => {
             // Triggered whenever the size of the target is changed...

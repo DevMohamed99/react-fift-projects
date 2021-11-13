@@ -8,9 +8,10 @@ import { getNavBarHeightState } from "../features/components/useActiveNav";
 // Hook
 
 function Home() {
+    // eslint-disable-next-line
     const getHeight = useSelector(getNavBarHeightState);
     const [width, setWidth] = useState(window.innerWidth);
-    const [scrolling, setScrolling] = useState(window.innerWidth);
+    const [activeElem, setActiveElem] = useState("home");
 
     useEffect(() => {
         function handleResize() {
@@ -22,46 +23,18 @@ function Home() {
         };
     }, [width]);
 
-    const handleActiveNav = (width, scrollPosition) => {
-        if (width >= 900) {
-            if (scrollPosition <= 716) {
-                return "home";
-            } else if (scrollPosition > 716 && scrollPosition <= 1280) {
-                return "about me";
-            } else {
-                return "projects";
+    const handleActiveNav = (height, scrollPosition, screenWidth) => {
+        if (scrollPosition <= height.Home - 170) {
+            if (activeElem !== "home") {
+                setActiveElem("home");
             }
-        } else if (width < 900) {
-            if (scrollPosition <= 716) {
-                return "home";
-            } else if (scrollPosition > 716 && scrollPosition <= 2080) {
-                return "about me";
-            } else {
-                return "projects";
+        } else if (scrollPosition > height.Home - 170 && scrollPosition <= height.Home + height.About - 170) {
+            if (activeElem !== "aboutMe") {
+                setActiveElem("aboutMe");
             }
-        } else if (width < 600) {
-            if (scrollPosition <= 856) {
-                return "home";
-            } else if (scrollPosition > 856 && scrollPosition <= 2280) {
-                return "about me";
-            } else {
-                return "projects";
-            }
-        } else if (width < 400 && width > 300) {
-            if (scrollPosition <= 876) {
-                return "home";
-            } else if (scrollPosition > 876 && scrollPosition <= 2300) {
-                return "about me";
-            } else {
-                return "projects";
-            }
-        } else {
-            if (scrollPosition <= 1050) {
-                return "home";
-            } else if (scrollPosition > 1050 && scrollPosition <= 2600) {
-                return "about me";
-            } else {
-                return "projects";
+        } else if (scrollPosition > height.Home + height.About - 170) {
+            if (activeElem !== "projects") {
+                setActiveElem("projects");
             }
         }
     };
@@ -70,26 +43,25 @@ function Home() {
         <Main>
             <MainHome
                 onScroll={(e) => {
-                    setScrolling(e.target.scrollTop);
-                    console.log(handleActiveNav(width, scrolling));
+                    handleActiveNav(getHeight, e.target.scrollTop);
                 }}>
                 {/* // ! section NavBar */}
                 <HeaderProfiler>
                     <h1>𝓔𝓛 𝓜𝓸𝓾𝓶𝓷𝔂</h1>
                     <MenuItems>
-                        <MenuItem>
+                        <MenuItem className={activeElem === "home" && width > 600 && "text-blue-500"}>
                             <a href="/#home">
                                 <Unicons.UilEstate />
                                 <span>Home</span>
                             </a>
                         </MenuItem>
-                        <MenuItem>
+                        <MenuItem className={activeElem === "aboutMe" && width > 600 && "text-blue-500"}>
                             <a href="/#aboutMe">
                                 <Unicons.UilUser />
                                 <span>About</span>
                             </a>
                         </MenuItem>
-                        <MenuItem>
+                        <MenuItem className={activeElem === "projects" && width > 600 && "text-blue-500"}>
                             <a href="/#projects">
                                 <Unicons.UilConstructor />
                                 <span>Projects</span>
@@ -111,13 +83,13 @@ function Home() {
                 </Footer>
             </MainHome>
             <BottomNavBar Display={width <= 610 ? "flex" : "none"}>
-                <a href="/#home">
+                <a href="/#home" className={activeElem === "home" && width <= 610 && "text-blue-500"}>
                     <Unicons.UilEstate />
                 </a>
-                <a href="/#aboutMe">
+                <a href="/#aboutMe" className={activeElem === "aboutMe" && width <= 610 && "text-blue-500"}>
                     <Unicons.UilUser />
                 </a>
-                <a href="/#projects">
+                <a href="/#projects" className={activeElem === "projects" && width <= 610 && "text-blue-500"}>
                     <Unicons.UilConstructor />
                 </a>
             </BottomNavBar>
@@ -248,9 +220,9 @@ const BottomNavBar = styled.div`
     align-items: center;
     justify-content: space-around;
     color: var(--grey-500);
-    padding: 0.2rem 0;
+    padding: 0.5rem 0;
     svg {
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
     }
 `;
