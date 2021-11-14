@@ -23,7 +23,7 @@ function Home() {
         };
     }, [width]);
 
-    const handleActiveNav = (height, scrollPosition, screenWidth) => {
+    const handleActiveNav = (height, scrollPosition) => {
         if (scrollPosition <= height.Home - 170) {
             if (activeElem !== "home") {
                 setActiveElem("home");
@@ -117,7 +117,7 @@ const MainHome = styled.main`
 // ! section Nav Bar
 const HeaderProfiler = styled.div`
     overflow: hidden;
-    background-color: var(--grey-200);
+    background-color: rgba(226, 232, 240, 0.9);
     position: sticky;
     top: 0;
     padding: 1rem 2rem 0.6rem;

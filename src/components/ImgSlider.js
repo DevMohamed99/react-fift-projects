@@ -7,7 +7,7 @@ import { useState } from "react";
 import { HiArrowCircleLeft, HiArrowCircleRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
-function ImgSlider({ data, numbToShow = 3, paddingSlider = "50px", imgPosition = "50% 50%" ,showUp= true }) {
+function ImgSlider({ data, numbToShow = 3, paddingSlider = "50px", imgPosition = "50% 50%", showUp = true }) {
     const NextArrow = ({ onClick }) => {
         return (
             <MainNext onClick={onClick}>
@@ -38,19 +38,19 @@ function ImgSlider({ data, numbToShow = 3, paddingSlider = "50px", imgPosition =
         autoplay: true,
         responsive: [
             {
-              breakpoint: 1024,
-              settings: {
-                centerPadding: "0",
-              }
+                breakpoint: 1024,
+                settings: {
+                    centerPadding: "0",
+                },
             },
             {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 1,
-                arrows: false,
-              }
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    arrows: false,
+                },
             },
-          ],
+        ],
     };
 
     return (
@@ -65,6 +65,7 @@ function ImgSlider({ data, numbToShow = 3, paddingSlider = "50px", imgPosition =
                                 nextIdx={NextImg}
                                 idx={index}
                                 link={item.link}
+                                blankLink={item.blankLink}
                                 imgPosition={imgPosition}
                             />
                         );
@@ -78,12 +79,18 @@ function ImgSlider({ data, numbToShow = 3, paddingSlider = "50px", imgPosition =
     );
 }
 
-function ImagesSlider({ image, nextIdx, idx, link, imgPosition }) {
+function ImagesSlider({ image, nextIdx, idx, link, imgPosition, blankLink }) {
     return (
         <Wrap className={nextIdx === idx && "active"} imgPosition={imgPosition}>
-            <Link to={link} target="_blank">
-                <img src={image} alt="" />
-            </Link>
+            {blankLink ? (
+                <Link to={{ pathname: link }} target="_blank">
+                    <img src={image} alt="" />
+                </Link>
+            ) : (
+                <Link to={link}>
+                    <img src={image} alt="" />
+                </Link>
+            )}
         </Wrap>
     );
 }
@@ -133,14 +140,14 @@ const Details = styled.div`
         letter-spacing: 0.1rem;
         height: 60px;
     }
-    @media (max-width: 600px){
-        h3{
+    @media (max-width: 600px) {
+        h3 {
             font-size: 1.2rem;
         }
-        p{
-            font-size: .8rem;
-        letter-spacing: 0.05rem;
-        width: 90%;
+        p {
+            font-size: 0.8rem;
+            letter-spacing: 0.05rem;
+            width: 90%;
         }
     }
 `;
