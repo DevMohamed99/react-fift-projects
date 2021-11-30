@@ -16,7 +16,7 @@ const dataImageAP = [
     {
         img: "https://pngimg.com/uploads/netflix/netflix_PNG10.png",
         title: "netflix-clone",
-        desc: "This project is clone app of tesla, has beautiful UI",
+        desc: "This project is clone app of Netflix, has authentication with firebase, call api TMDB for films and TV shows and has beautiful UI",
         link: "https://reactt-netflix-clone.netlify.app/",
         blankLink: true,
     },
