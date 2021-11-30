@@ -3,7 +3,7 @@ const dataImageAP = [
         img: "https://icon-library.com/images/tesla-icon/tesla-icon-0.jpg",
         title: "tesla-clone",
         desc: "This project is clone app of tesla, has beautiful UI",
-        link: "/apis-ui/clone-facebook/home",
+        link: "https://reactt-tesla-clone.netlify.app/",
         blankLink: true,
     },
     {
@@ -14,10 +14,10 @@ const dataImageAP = [
         blankLink: false,
     },
     {
-        img: "https://icon-library.com/images/tesla-icon/tesla-icon-0.jpg",
-        title: "tesla-clone",
+        img: "https://pngimg.com/uploads/netflix/netflix_PNG10.png",
+        title: "netflix-clone",
         desc: "This project is clone app of tesla, has beautiful UI",
-        link: "/apis-ui/clone-facebook/home",
+        link: "https://reactt-netflix-clone.netlify.app/",
         blankLink: true,
     },
     {

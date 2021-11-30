@@ -1,29 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Post from "../../../components/chat/feed/Post";
 import Share from "../../../components/chat/feed/Share";
 import Story from "../../../components/chat/feed/Story";
 import { Posts } from "../../../projects/dataChatPosts";
-
+import db from "../../../firebase-config";
+import { onSnapshot, collection } from "firebase/firestore";
 
 function Feed({ customPadding }) {
-    
+    const [posts, setPosts] = useState([]);
+
+    useEffect(
+        () =>
+            onSnapshot(collection(db, "posts"), (snapshot) => {
+                setPosts(snapshot.docs.map((doc) => doc.data()));
+            }),
+        []
+    );
+    console.log(posts);
     return (
         <MainFeed padding={customPadding}>
             <Story />
             <Share />
-            {Posts &&
-                Posts.map((post, index) => {
+            {posts &&
+                posts.map((post, index) => {
                     return (
                         <Post
                             key={index}
-                            profilePic="/assets/person/3.jpeg"
-                            image={`/${post.photo}`}
-                            username="Mohamed"
-                            timestamp={post.date}
-                            message={post.desc}
-                            likes={post.like}
-                            comment={post.comment}
+                            profilePic={post.profilePic}
+                            image={post.image}
+                            username={post.userName}
+                            timestamp={post.timestamp}
+                            message={post.message}
+                            likes={67}
+                            comment={8}
                         />
                     );
                 })}

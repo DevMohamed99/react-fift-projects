@@ -3,19 +3,31 @@ import { PermMedia, EmojiEmotions, Videocam, Send } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 import { useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
-import {useSelector} from "react-redux";
-import {getProfilePic} from "../../../features/users/usersSlice";
+import { useSelector } from "react-redux";
+import { getName, getProfilePic } from "../../../features/users/usersSlice";
+import { addDoc, collection, Timestamp } from "@firebase/firestore";
+import db from "../../../firebase-config";
 
 function Share() {
-
     const userProfilePic = useSelector(getProfilePic);
-
+    const userName = useSelector(getName);
     const [inputValue, setInputValue] = useState("");
     const [imageUrl, setImageUrl] = useState("");
 
+    const addPost = async (urlImage, messagePost) => {
+        await addDoc(collection(db, "posts"), {
+            image: urlImage,
+            message: messagePost,
+            profilePic: userProfilePic,
+            timestamp: "December 10, 1815",
+            userName: userName,
+        });
+        console.log("sending data");
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
-
+        addPost(imageUrl, inputValue);
         setInputValue("");
         setImageUrl("");
     };
@@ -23,10 +35,10 @@ function Share() {
     return (
         <MainShare>
             <ShareTop>
-                <Avatar src={userProfilePic ? userProfilePic :"/assets/person/2.jpeg"} />
+                <Avatar src={userProfilePic ? userProfilePic : "/assets/person/2.jpeg"} />
                 <form>
                     <TextareaAutosize
-                        placeholder="What's in your mind ..."
+                        placeholder={`What's in your mind ${userName} ...`}
                         value={inputValue}
                         type="text"
                         onChange={(e) => setInputValue(e.target.value)}
@@ -85,7 +97,7 @@ const ShareTop = styled.div`
         gap: 0.7rem;
         width: 100%;
     }
-    textarea {       
+    textarea {
         background-color: var(--grey-200);
         padding: 0.9rem 1.3rem;
         scrollbar-width: none;
@@ -102,12 +114,15 @@ const ShareTop = styled.div`
         }
     }
     button {
-        display: none;
+        border-radius: 50%;
+        color: white;
+        height: 40px;
+        width: 40px;
     }
-    .input1{
+    .input1 {
         flex: 1.4;
     }
-    .input2{
+    .input2 {
         flex: 0.5;
     }
 `;

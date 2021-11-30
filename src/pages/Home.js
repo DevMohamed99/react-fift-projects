@@ -134,9 +134,7 @@ const HeaderProfiler = styled.div`
         font-weight: 600;
         letter-spacing: 0.1rem;
         cursor: pointer;
-        &:hover {
-            color: var(--blue-500);
-        }
+        color: var(--blue-500);
     }
     @media (max-width: 610px) {
         justify-content: center;

@@ -43,12 +43,6 @@ function AboutMe({ Id, screenWidth }) {
                                 <Unicons.UilImport />
                             </a>
                         </CVButton>
-                        <ContactMeButton>
-                            <a href="#contactMe">
-                                <span>Contact Me</span>
-                                <Unicons.UilMessage />
-                            </a>
-                        </ContactMeButton>
                     </Buttons>
                 </AboutMySelf>
                 <h2>What are my Skills ?</h2>
@@ -231,11 +225,8 @@ const Buttons = styled.div`
     margin-top: 2rem;
     display: flex;
     align-items: center;
-    gap: 3rem;
     @media (max-width: 600px) {
-        flex-direction: column;
         width: 100%;
-        gap: 1.5rem;
     }
 `;
 
@@ -267,23 +258,6 @@ const CVButton = styled.div`
         color: var(--main);
         &:hover {
             background-color: var(--blue);
-        }
-    }
-`;
-
-const ContactMeButton = styled(CVButton)`
-    background-color: transparent;
-    color: var(--main);
-    &:hover {
-        background-color: var(--blue);
-        color: var(--body-bg);
-    }
-    @media (max-width: 600px) {
-        background-color: var(--main);
-        border-color: var(--main);
-        color: var(--body-bg);
-        &:hover {
-            background-color: var(--main);
         }
     }
 `;

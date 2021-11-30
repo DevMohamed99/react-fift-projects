@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     user: {
-        isLogged: false,
+        isLogged: true,
         name: "",
         profilePic: "",
     },
@@ -15,11 +15,11 @@ const usersSlice = createSlice({
         userState: (state, { payload }) => {
             state.user.isLogged = payload.isLogged;
             state.user.name = payload.name;
-            state.user.profilePic= payload.profilePic;
+            state.user.profilePic = payload.profilePic;
         },
         userLogged: (state, { payload }) => {
             state.user.isLogged = payload.isLogged;
-        }
+        },
     },
 });
 

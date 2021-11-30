@@ -88,7 +88,7 @@ const LoginButton = styled.div`
     &:hover {
         border-color: var(--main);
         background-color: var(--main);
-        span{
+        span {
             color: var(--body-bg);
         }
     }
