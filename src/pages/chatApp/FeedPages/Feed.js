@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Post from "../../../components/chat/feed/Post";
 import Share from "../../../components/chat/feed/Share";
 import Story from "../../../components/chat/feed/Story";
-import { Posts } from "../../../projects/dataChatPosts";
+// import { Posts } from "../../../projects/dataChatPosts";
 import db from "../../../firebase-config";
 import { onSnapshot, collection } from "firebase/firestore";
 

@@ -5,7 +5,7 @@ import { useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { useSelector } from "react-redux";
 import { getName, getProfilePic } from "../../../features/users/usersSlice";
-import { addDoc, collection, Timestamp } from "@firebase/firestore";
+import { addDoc, collection } from "@firebase/firestore";
 import db from "../../../firebase-config";
 
 function Share() {
