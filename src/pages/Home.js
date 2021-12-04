@@ -99,6 +99,8 @@ function Home() {
                             <Unicons.UilLinkedin className="linkedInIcon" />
                         </Link>
                     </ContactMeNow>
+                    <span>Email : elmoumnymohamed1999@gmail.com</span>
+                    <span>Tel : +212690322618</span>
                     <h4>All rights reserved 2021, created in 11/21.</h4>
                 </Footer>
             </MainHome>
@@ -228,6 +230,9 @@ const Footer = styled.div`
         font-family: "Roboto Mono";
         font-weight: 500;
         letter-spacing: 0.2rem;
+    }
+    span {
+        font-size: clamp(0.8rem, 2vw, 1.05rem);
     }
     @media (max-width: 600px) {
         h4 {
