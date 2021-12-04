@@ -98,9 +98,6 @@ function Home() {
                             target="_blank">
                             <Unicons.UilLinkedin className="linkedInIcon" />
                         </Link>
-                        <Link>
-                            <Unicons.UilWhatsappAlt className="whatsAppIcon" />
-                        </Link>
                     </ContactMeNow>
                     <h4>All rights reserved 2021, created in 11/21.</h4>
                 </Footer>
