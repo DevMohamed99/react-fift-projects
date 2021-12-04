@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import * as Unicons from "@iconscout/react-unicons";
 import { Typewriter } from "react-simple-typewriter";
 import { Link } from "react-router-dom";
@@ -6,7 +6,6 @@ import { CustomHeight } from "..";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getNavBarHeightState, setNavBarHeight } from "../../features/components/useActiveNav";
-import { motion } from "framer-motion";
 
 function Portfolio({ Id }) {
     const dispatch = useDispatch();
