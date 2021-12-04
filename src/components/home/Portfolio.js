@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import * as Unicons from "@iconscout/react-unicons";
 import { Typewriter } from "react-simple-typewriter";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { CustomHeight } from "..";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getNavBarHeightState, setNavBarHeight } from "../../features/components/useActiveNav";
+import { motion } from "framer-motion";
 
 function Portfolio({ Id }) {
     const dispatch = useDispatch();
@@ -32,14 +33,18 @@ function Portfolio({ Id }) {
                         experience of coding ...
                     </p>
                     <PortfolioSocial>
+                        <MyResume href="/files/Mohamed-EL-MOUMNY-Resume.pdf" download="EL Moumny Resume">
+                            <span>My Resume</span>
+                            <Unicons.UilImport />
+                        </MyResume>
+
                         <Social>
                             <Link to={{ pathname: "https://github.com/Mohamedsol99" }} target="_blank">
                                 <Unicons.UilGithub className="githubIcon" />
                             </Link>
-                            <Link to={{ pathname: "https://github.com/Mohamedsol99" }} target="_blank">
-                                <Unicons.UilInstagramAlt className="instagramIcon" />
-                            </Link>
-                            <Link to={{ pathname: "https://www.linkedin.com/Mohamedsol99" }} target="_blank">
+                            <Link
+                                to={{ pathname: "https://www.linkedin.com/in/elmoumny-mohamed-198121225/" }}
+                                target="_blank">
                                 <Unicons.UilLinkedin className="linkedInIcon" />
                             </Link>
                         </Social>
@@ -155,9 +160,52 @@ const PortfolioWelcome = styled.div`
 `;
 
 const PortfolioSocial = styled.div`
+    width: 100%;
     margin-top: 1rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 600px) {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+`;
+const bounce = keyframes`
+0% {
+    transform: scale(1);
+}
+50% {
+    transform: scale(1.1);
+}
+100% {
+    transform: scale(1);
+}
+`;
+
+const MyResume = styled.a`
+    background-color: var(--blue-500);
+    border: 2px solid var(--blue-500);
+    padding: 0.8rem 1.4rem;
+    border-radius: 8px;
+    color: var(--body-bg);
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: clamp(0.85rem, 2vw, 1.2rem);
+    letter-spacing: 0.13rem;
+    cursor: pointer;
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    animation: ${bounce} 2s ease infinite normal none running;
+    &:hover {
+        background-color: transparent;
+        border-color: var(--orange-clr);
+        color: var(--orange-clr);
+    }
+    @media (max-width: 600px) {
+        padding: 0.5rem 1rem;
+    }
 `;
 
 const Social = styled.div`

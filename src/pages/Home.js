@@ -4,6 +4,7 @@ import { AboutMe, MyProjects, Portfolio } from "../components";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getNavBarHeightState } from "../features/components/useActiveNav";
+import { Link } from "react-router-dom";
 
 // Hook
 
@@ -49,19 +50,28 @@ function Home() {
                 <HeaderProfiler>
                     <h1>𝓔𝓛 𝓜𝓸𝓾𝓶𝓷𝔂</h1>
                     <MenuItems>
-                        <MenuItem className={activeElem === "home" && width > 600 && "text-blue-500"}>
+                        <MenuItem
+                            className={
+                                activeElem === "home" && width > 600 ? "text-blue-500" : "var(--grey-500)"
+                            }>
                             <a href="/#home">
                                 <Unicons.UilEstate />
                                 <span>Home</span>
                             </a>
                         </MenuItem>
-                        <MenuItem className={activeElem === "aboutMe" && width > 600 && "text-blue-500"}>
+                        <MenuItem
+                            className={
+                                activeElem === "aboutMe" && width > 600 ? "text-blue-500" : "var(--grey-500)"
+                            }>
                             <a href="/#aboutMe">
                                 <Unicons.UilUser />
                                 <span>About</span>
                             </a>
                         </MenuItem>
-                        <MenuItem className={activeElem === "projects" && width > 600 && "text-blue-500"}>
+                        <MenuItem
+                            className={
+                                activeElem === "projects" && width > 600 ? "text-blue-500" : "var(--grey-500)"
+                            }>
                             <a href="/#projects">
                                 <Unicons.UilConstructor />
                                 <span>Projects</span>
@@ -79,17 +89,40 @@ function Home() {
                 {/* <ContactMe Id="contactMe" /> */}
                 {/* // ! section Footer  */}
                 <Footer mBNavBar={width <= 600 && "2rem"}>
-                    <h4>All rights reserved 2021, created in 09/21.</h4>
+                    <ContactMeNow>
+                        <Link to={{ pathname: "https://github.com/Mohamedsol99" }} target="_blank">
+                            <Unicons.UilGithub />
+                        </Link>
+                        <Link
+                            to={{ pathname: "https://www.linkedin.com/in/elmoumny-mohamed-198121225/" }}
+                            target="_blank">
+                            <Unicons.UilLinkedin className="linkedInIcon" />
+                        </Link>
+                        <Link>
+                            <Unicons.UilWhatsappAlt className="whatsAppIcon" />
+                        </Link>
+                    </ContactMeNow>
+                    <h4>All rights reserved 2021, created in 11/21.</h4>
                 </Footer>
             </MainHome>
             <BottomNavBar Display={width <= 610 ? "flex" : "none"}>
-                <a href="/#home" className={activeElem === "home" && width <= 610 && "text-blue-500"}>
+                <a
+                    href="/#home"
+                    className={activeElem === "home" && width <= 610 ? "text-blue-500" : "var(--grey-500)"}>
                     <Unicons.UilEstate />
                 </a>
-                <a href="/#aboutMe" className={activeElem === "aboutMe" && width <= 610 && "text-blue-500"}>
+                <a
+                    href="/#aboutMe"
+                    className={
+                        activeElem === "aboutMe" && width <= 610 ? "text-blue-500" : "var(--grey-500)"
+                    }>
                     <Unicons.UilUser />
                 </a>
-                <a href="/#projects" className={activeElem === "projects" && width <= 610 && "text-blue-500"}>
+                <a
+                    href="/#projects"
+                    className={
+                        activeElem === "projects" && width <= 610 ? "text-blue-500" : "var(--grey-500)"
+                    }>
                     <Unicons.UilConstructor />
                 </a>
             </BottomNavBar>
@@ -117,7 +150,7 @@ const MainHome = styled.main`
 // ! section Nav Bar
 const HeaderProfiler = styled.div`
     overflow: hidden;
-    background-color: rgba(226, 232, 240, 0.9);
+    background-color: var(--grey-200);
     position: sticky;
     top: 0;
     padding: 1rem 2rem 0.6rem;
@@ -189,22 +222,37 @@ const Footer = styled.div`
     margin-bottom: ${(props) => (props.mBNavBar ? props.mBNavBar : "0")};
     padding: 0.9rem 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: var(--grey-300);
-    gap: 0.5rem;
+    gap: 0.7rem;
     h4 {
         font-family: "Roboto Mono";
         font-weight: 500;
         letter-spacing: 0.2rem;
     }
     @media (max-width: 600px) {
-        align-items: flex-start;
-        padding: 0.9rem;
         h4 {
             font-size: 0.9rem;
             text-align: center;
+            margin-bottom: 1rem;
         }
+    }
+`;
+
+const ContactMeNow = styled.div`
+    display: flex;
+    gap: 1rem;
+    .whatsAppIcon {
+        color: var(--green);
+    }
+    .linkedInIcon {
+        color: var(--blue-500);
+    }
+    svg {
+        width: 40px;
+        height: 40px;
     }
 `;
 
