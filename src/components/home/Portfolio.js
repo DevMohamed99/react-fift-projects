@@ -32,7 +32,12 @@ function Portfolio({ Id }) {
                         of coding ...
                     </p>
                     <PortfolioSocial>
-                        <MyResume href="https://drive.google.com/file/d/1bIA7dsPBlIVBkWKjoum-NEgdIVgst6oq/view?usp=sharing">
+                        <MyResume
+                            to={{
+                                pathname:
+                                    "https://drive.google.com/file/d/1bIA7dsPBlIVBkWKjoum-NEgdIVgst6oq/view?usp=sharing",
+                            }}
+                            target="_blank">
                             <span>My Resume</span>
                             <Unicons.UilImport />
                         </MyResume>
@@ -171,7 +176,7 @@ const PortfolioSocial = styled.div`
     }
 `;
 
-const MyResume = styled.a`
+const MyResume = styled(Link)`
     background-color: var(--blue-500);
     border: 2px solid var(--blue-500);
     padding: 0.8rem 1.4rem;

@@ -5,6 +5,7 @@ import { ErrorOutline } from "@mui/icons-material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getNavBarHeightState, setNavBarHeight } from "../../features/components/useActiveNav";
+import { Link } from "react-router-dom";
 
 function AboutMe({ Id, screenWidth }) {
     const dispatch = useDispatch();
@@ -41,10 +42,15 @@ function AboutMe({ Id, screenWidth }) {
                     </p>
                     <Buttons>
                         <CVButton>
-                            <a href="https://drive.google.com/file/d/1k56CokR4d3lToDoMnqeQE8UsoaO65KIW/view?usp=sharing">
+                            <Link
+                                to={{
+                                    pathname:
+                                        "https://drive.google.com/file/d/1k56CokR4d3lToDoMnqeQE8UsoaO65KIW/view?usp=sharing",
+                                }}
+                                target="_blank">
                                 <span>Download CV</span>
                                 <Unicons.UilImport />
-                            </a>
+                            </Link>
                         </CVButton>
                     </Buttons>
                 </AboutMySelf>
