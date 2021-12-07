@@ -38,7 +38,7 @@ function AboutMe({ Id, screenWidth }) {
                     </p>
                     <Buttons>
                         <CVButton>
-                            <a href="/files/CVMohamed.pdf" download="EL Moumny CV">
+                            <a href="https://drive.google.com/file/d/1k56CokR4d3lToDoMnqeQE8UsoaO65KIW/view?usp=sharing">
                                 <span>Download CV</span>
                                 <Unicons.UilImport />
                             </a>

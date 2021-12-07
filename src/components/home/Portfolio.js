@@ -27,12 +27,12 @@ function Portfolio({ Id }) {
                     <h1>Hi!, I'am EL Moumny Mohamed</h1>
                     <h3>Web Developer</h3>
                     <p>
-                        I have knowledge and experience in web development I'm using VS code as editor and
-                        Github with his control tool Git in my workplace and other things to help me get best
-                        experience of coding ...
+                        I have knowledge and experience in web development, I'm using VS code as editor ,
+                        Github, Git and more in my workplace and other things to help me get best experience
+                        of coding ...
                     </p>
                     <PortfolioSocial>
-                        <MyResume href="/files/Mohamed-EL-MOUMNY-Resume.pdf" download="EL Moumny Resume">
+                        <MyResume href="https://drive.google.com/file/d/1bIA7dsPBlIVBkWKjoum-NEgdIVgst6oq/view?usp=sharing">
                             <span>My Resume</span>
                             <Unicons.UilImport />
                         </MyResume>
@@ -170,17 +170,6 @@ const PortfolioSocial = styled.div`
         gap: 2rem;
     }
 `;
-const bounce = keyframes`
-0% {
-    transform: scale(1);
-}
-50% {
-    transform: scale(1.1);
-}
-100% {
-    transform: scale(1);
-}
-`;
 
 const MyResume = styled.a`
     background-color: var(--blue-500);
@@ -196,7 +185,7 @@ const MyResume = styled.a`
     display: flex;
     gap: 0.6rem;
     align-items: center;
-    animation: ${bounce} 2s ease infinite normal none running;
+    transition: all 250ms ease-in-out;
     &:hover {
         background-color: transparent;
         border-color: var(--orange-clr);
