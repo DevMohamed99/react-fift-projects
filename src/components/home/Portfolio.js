@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import * as Unicons from "@iconscout/react-unicons";
 import { Typewriter } from "react-simple-typewriter";
 import { Link } from "react-router-dom";

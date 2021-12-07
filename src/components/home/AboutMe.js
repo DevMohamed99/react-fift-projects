@@ -31,10 +31,13 @@ function AboutMe({ Id, screenWidth }) {
                 <AboutMySelf>
                     <h6>I'am Web Developer</h6>
                     <p>
-                        My name is <span>EL Moumny Mohamed</span>, I'm 21 years old, I've 2 degrees in my
-                        studies first degree in High School and second in University in computer science .From
-                        high school <span>my dream job was to be a developer</span> for me developer can do
-                        anything with any language of development that's what I like in this job ..
+                        Hi ! there, My name is <span>EL Moumny Mohamed</span>, I'm 22 years old self-taught
+                        JavaScript Web Developer , I love using react js library in my projects, I keep myself
+                        updated as i can for new things in web development, I love programing and learning new
+                        things because programing languages solve a lot of problems in our daily life , that's
+                        a raison why i choose to be developer .At high school
+                        <span>my dream job was to be a developer</span> for me developer can do anything with
+                        any language of development that's what I like in this job ..
                     </p>
                     <Buttons>
                         <CVButton>
