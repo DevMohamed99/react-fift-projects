@@ -43,11 +43,11 @@ function Portfolio({ Id }) {
                         </MyResume>
 
                         <Social>
-                            <Link to={{ pathname: "https://github.com/Mohamedsol99" }} target="_blank">
+                            <Link to={{ pathname: "https://github.com/MohamedDev99" }} target="_blank">
                                 <Unicons.UilGithub className="githubIcon" />
                             </Link>
                             <Link
-                                to={{ pathname: "https://www.linkedin.com/in/elmoumny-mohamed-198121225/" }}
+                                to={{ pathname: "https://www.linkedin.com/in/elmoumny-mohamed/" }}
                                 target="_blank">
                                 <Unicons.UilLinkedin className="linkedInIcon" />
                             </Link>
