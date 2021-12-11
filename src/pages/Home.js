@@ -9,6 +9,13 @@ import { Link } from "react-router-dom";
 // Hook
 
 function Home() {
+    const pathName = window.location.pathname;
+
+    useEffect(() => {
+        if (!pathName.includes("/apis-ui/clone-facebook")) {
+            document.title = "El Moumny Portfolio";
+        }
+    });
     // eslint-disable-next-line
     const getHeight = useSelector(getNavBarHeightState);
     const [width, setWidth] = useState(window.innerWidth);

@@ -8,6 +8,13 @@ import db from "../../../firebase-config";
 import { onSnapshot, collection } from "firebase/firestore";
 
 function Feed({ customPadding }) {
+    const pathName = window.location.pathname;
+
+    useEffect(() => {
+        if (pathName.includes("/apis-ui/clone-facebook")) {
+            document.title = "Facebook-Clone";
+        }
+    });
     const [posts, setPosts] = useState([]);
 
     useEffect(

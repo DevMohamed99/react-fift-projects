@@ -1,10 +1,18 @@
 import { Add, EditRounded, Favorite, Home, School, Work } from "@mui/icons-material";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { getUser } from "../../features/users/usersSlice";
 import Feed from "./FeedPages/Feed";
 
 function ProfileChatApp() {
+    const pathName = window.location.pathname;
+
+    useEffect(() => {
+        if (pathName.includes("/apis-ui/clone-facebook")) {
+            document.title = "Facebook-Clone";
+        }
+    });
     const user = useSelector(getUser);
 
     return (
@@ -17,8 +25,8 @@ function ProfileChatApp() {
                 <ProfileInfo>
                     <h4>{user.name}</h4>
                     <p>
-                        Lorem ipsum dolor sit am Lorem ipsum dolor sit am Lorem ipsum d Lorem ipsum
-                        dolor sit am Lore
+                        Lorem ipsum dolor sit am Lorem ipsum dolor sit am Lorem ipsum d Lorem ipsum dolor sit
+                        am Lore
                     </p>
                 </ProfileInfo>
                 <ProfileSettings>

@@ -4,8 +4,16 @@ import { auth, provider } from "../../firebase-config";
 import { useDispatch, useSelector } from "react-redux";
 import { getLoginState, userState } from "../../features/users/usersSlice";
 import { Redirect } from "react-router";
+import { useEffect } from "react";
 
 function Login() {
+    const pathName = window.location.pathname;
+
+    useEffect(() => {
+        if (pathName.includes("/apis-ui/clone-facebook")) {
+            document.title = "Facebook-Clone";
+        }
+    });
     const isLoggedIn = useSelector(getLoginState);
     const dispatch = useDispatch();
     const user = auth.currentUser;

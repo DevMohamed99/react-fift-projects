@@ -5,6 +5,13 @@ import axios from "axios";
 import HtmlParser from "react-html-parser";
 
 function VideosChatApp() {
+    const pathName = window.location.pathname;
+
+    useEffect(() => {
+        if (pathName.includes("/apis-ui/clone-facebook")) {
+            document.title = "Facebook-Clone";
+        }
+    });
     const options = {
         method: "GET",
         url: "https://free-football-soccer-videos.p.rapidapi.com/",

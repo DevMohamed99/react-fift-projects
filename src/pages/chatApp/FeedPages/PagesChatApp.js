@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import { useEffect } from "react";
 
 function PagesChatApp() {
-    return (
-        <div>
-            PagesChatApp
-        </div>
-    )
+    const pathName = window.location.pathname;
+
+    useEffect(() => {
+        if (pathName.includes("/apis-ui/clone-facebook")) {
+            document.title = "Facebook-Clone";
+        }
+    });
+    return <div>PagesChatApp</div>;
 }
 
-export default PagesChatApp
+export default PagesChatApp;
